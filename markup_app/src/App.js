@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Navbar, Nav, NavItem, Container } from 'reactstrap';
-import Home from './Home';
-import FixedCosts from './FixedCosts';
-import VariableCosts from './VariableCosts';
+import Home from './Pages/Home';
+import FixedCosts from './Pages/Add.Page';
+import VariableCosts from './Pages/VariableCosts';
 
 const App = () => {
   return (

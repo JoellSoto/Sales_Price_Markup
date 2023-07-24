@@ -1,0 +1,44 @@
+$small: 450px;
+$medium: 900px;
+
+
+.inputContainer{
+   
+    background-color: white;
+    padding: 1rem 2rem 1.2rem 2rem;
+    border-radius: 10px;
+    box-shadow: -1px 0px 5px 2px rgba(0, 0, 0, 0.10);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+    
+      @media screen and (min-width: $medium) {
+        margin: 0 auto;
+        max-width:750px;
+        margin-top: 100px;
+        height: 305px;
+        display: grid;
+        grid-template-columns: 1;
+        grid-template-rows: 2;
+      }
+    
+}
+.textVisibleSize{
+    font-size: 14px;
+    @media screen and (max-width: $small) {
+        display: none;   
+      }
+}
+.prevNexbuttons{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    @media screen and (min-width: $medium) {
+        height: 30px;
+      }
+    
+}
+.title{
+    display: flex;
+    justify-content: center;
+}
+

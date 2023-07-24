@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Container, Row, Col, FormGroup, Input, Button } from 'reactstrap';
 
 const VariableCosts = () => {
   const [costs, setCosts] = useState([0, 0, 0, 0, 0]);
