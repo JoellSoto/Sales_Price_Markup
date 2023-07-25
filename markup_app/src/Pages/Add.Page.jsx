@@ -8,11 +8,32 @@ import Percentage from '../Components/Percentage.Component';
 import { useState } from 'react';
 
 
-export default function Add(){
-    const [pageIndex,setPageIndex]=useState(0);
-    const FIXEDPAGE=<FixedCosts/>;
-    const VARIABLEPAGE=<VariableCosts/>;
-    const PercentagePage=<Percentage/>
+export default function Add({input}){
+  const FIXED={
+    'FixedCost':input.fc,
+    'setFixedCosts':input.sfc,
+    'totalFixedCost':input.tfc,
+    'setTotalFixedCost':input.stfc      
+  } 
+  const VARIABLE={
+    'setVariableCosts':input.svc,
+    'VariableCost':input.vc,
+    'totalVariableCost':input.tvc,
+    'setTotalVariableCost':input.stvc
+  }
+  const PERCENTAGE={
+    'percentages':input.pc,
+    'setPercentages':input.sp,
+    'setTotalPercentages':input.stp,
+    'totalPercentages':input.tpc
+  }
+
+
+  const [pageIndex,setPageIndex]=useState(0);
+  const FIXEDPAGE=<FixedCosts Fixed={FIXED}/>;
+  const VARIABLEPAGE=<VariableCosts Variable={VARIABLE}/>;
+  const PercentagePage=<Percentage Percentagem={PERCENTAGE}/>
+
     const pages=[FIXEDPAGE,VARIABLEPAGE,PercentagePage];
     
 

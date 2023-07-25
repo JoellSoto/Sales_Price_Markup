@@ -1,19 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import TextField  from '@mui/material/TextField';
-import Styles from '../Styles/form.module.scss'
+import Styles from '../Styles/form.module.scss';
+import {handlePercentageChange} from '../utils/InputsFunctions';
 
 
-const Percentage = () => {
-  const [costs, setCosts] = useState([0, 0, 0, 0, 0]);
-  const [totalCost, setTotalCost] = useState(0);
-  const handlePercentageChange = (index, value) => {
-    const updatedCosts = [...costs];
-    value=Math.min(Math.max(parseFloat(value), 0), 100)
-    updatedCosts[index] = value || 0;
-    setCosts(updatedCosts);
-    setTotalCost(updatedCosts.reduce((acc, curr) => acc + curr, 0));
-  };
+const Percentage = ({Percentagem}) => {
+ const {percentages,setPercentages,setTotalPercentages,totalPercentages}= Percentagem;
   
 
   return (
@@ -32,8 +25,8 @@ const Percentage = () => {
               label="Lucro"
               name="lucro"
               variant="standard"
-              value={costs[0]}
-              onChange={(e) => handlePercentageChange(0, e.target.value)}
+              value={percentages[0]}
+              onChange={(e) => handlePercentageChange(0, e.target.value,setPercentages,percentages,setTotalPercentages)}
               fullWidth
             />   
           </Col>
@@ -44,8 +37,8 @@ const Percentage = () => {
               label="Cartão"
               name="cartao"
               variant="standard"
-              value={costs[1]}
-              onChange={(e) => handlePercentageChange(1, e.target.value)}
+              value={percentages[1]}
+              onChange={(e) => handlePercentageChange(1, e.target.value,setPercentages,percentages,setTotalPercentages)}
               fullWidth
             />   
           </Col>
@@ -58,8 +51,8 @@ const Percentage = () => {
               label="IVA"
               name="iva"
               variant="standard"
-              value={costs[2]}
-              onChange={(e) => handlePercentageChange(2, e.target.value)}
+              value={percentages[2]}
+              onChange={(e) => handlePercentageChange(2, e.target.value,setPercentages,percentages,setTotalPercentages)}
               fullWidth
             />   
           </Col>
@@ -70,8 +63,8 @@ const Percentage = () => {
               label="Manutenção e reparos"
               name="reparos"
               variant="standard"
-              value={costs[3]}
-              onChange={(e) => handlePercentageChange(3, e.target.value)}
+              value={percentages[3]}
+              onChange={(e) => handlePercentageChange(3, e.target.value,setPercentages,percentages,setTotalPercentages)}
               fullWidth
             />   
           </Col>
@@ -80,7 +73,7 @@ const Percentage = () => {
       <Row className="mt-3">
         <Col>
           <div className="text-center">
-            <h6>{totalCost.toFixed(2)} %</h6>
+            <h6>{totalPercentages.toFixed(2)} %</h6>
           </div>
         </Col>
       </Row>

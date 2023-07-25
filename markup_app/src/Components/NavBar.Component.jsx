@@ -14,11 +14,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
-const navItems = ['Pagina Inicial','Preços', 'Tutorial', 'Histórico','Perfil'];
+const navItems = ['Pagina Inicial','Novo Preço', 'Tutorial', 'Histórico','Perfil'];
+const navigation =['/','addPrice'];
 
 function DrawerAppBar(props) {
+  const navigate = useNavigate();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -33,13 +36,16 @@ function DrawerAppBar(props) {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+          <ListItem key={'Pagina Inicial'} disablePadding onClick={()=>navigate('/')}>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={'Pagina Inicial'} />
             </ListItemButton>
           </ListItem>
-        ))}
+          <ListItem key={'Preços'} disablePadding>
+            <ListItemButton sx={{ textAlign: 'center' }}>
+              <ListItemText primary={'Preços'} />
+            </ListItemButton>
+          </ListItem>
       </List>
     </Box>
   );
@@ -68,8 +74,8 @@ function DrawerAppBar(props) {
             Sistema De Precificação
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
+            {navItems.map((item,index) => (
+              <Button key={item} sx={{ color: '#fff' }} onClick={()=>navigate(navigation[index])}>
                 {item}
               </Button>
             ))}
