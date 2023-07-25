@@ -13,6 +13,7 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import AdbIcon from '@mui/icons-material/Adb';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
@@ -48,6 +49,7 @@ function DrawerAppBar(props) {
           </ListItem>
       </List>
     </Box>
+    
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
@@ -56,6 +58,7 @@ function DrawerAppBar(props) {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar component="nav">
+      
         <Toolbar>
           <IconButton
             color="inherit"
@@ -64,8 +67,28 @@ function DrawerAppBar(props) {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
+           
             <MenuIcon />
+          
           </IconButton>
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href=""
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontSize:20,
+              fontFamily: 'monospace',
+              fontWeight: 600,
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            Sistema de Precificação 
+          </Typography>      
           <Typography
             variant="h6"
             component="div"
@@ -81,8 +104,10 @@ function DrawerAppBar(props) {
             ))}
           </Box>
         </Toolbar>
+        
       </AppBar>
       <Box component="nav">
+     
         <Drawer
           container={container}
           variant="temporary"
@@ -97,7 +122,9 @@ function DrawerAppBar(props) {
           }}
         >
           {drawer}
+          
         </Drawer>
+        
       </Box>
       
     </Box>

@@ -16,7 +16,7 @@ $medium: 900px;
         margin: 0 auto;
         max-width:750px;
         margin-top: 150px;
-        height: 315px;
+        height: 335px;
         display: grid;
         grid-template-columns: 1;
         grid-template-rows: 2;
@@ -41,7 +41,10 @@ $medium: 900px;
     justify-content: center;
 
     @media screen and (min-width: $medium) {
-        height: 30px;
+        
+      }
+      @media screen and (max-width: $small) {
+       margin-top: 3%;   
       }
     
 }

@@ -14,6 +14,7 @@ const App = () => {
   const [totalVariableCost, setTotalVariableCost] = useState(0);
   const [Percentages, setPercentages] = useState([0, 0, 0, 0, 0]);
   const [totalPercentages, setTotalPercentages] = useState(0);
+  const [produts,setProduts]=useState([]);
 
   const inputPrices={
     'fc':FixedCost,
@@ -34,9 +35,9 @@ const App = () => {
       <NavBarC/>
       <Container className="mt-4">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/addPrice" element={<AddPrice  input={inputPrices}/>} />
-          <Route path="/variable-costs" element={<VariableCosts />} />
+          <Route path="/" element={<Home produts={produts}/>} />
+          <Route path="/addPrice" element={<AddPrice  input={inputPrices} produts={produts} setProduts={setProduts}/>} />
+         
         </Routes>
       </Container>
     </div>

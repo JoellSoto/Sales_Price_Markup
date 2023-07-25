@@ -8,7 +8,7 @@ import Percentage from '../Components/Percentage.Component';
 import { useState } from 'react';
 
 
-export default function Add({input}){
+export default function Add({input,setProduts,produts}){
   const FIXED={
     'FixedCost':input.fc,
     'setFixedCosts':input.sfc,
@@ -25,7 +25,14 @@ export default function Add({input}){
     'percentages':input.pc,
     'setPercentages':input.sp,
     'setTotalPercentages':input.stp,
-    'totalPercentages':input.tpc
+    'totalPercentages':input.tpc,
+
+    'FixedCost':input.fc,
+    'totalFixedCost':input.tfc,
+    'VariableCost':input.vc,
+    'totalVariableCost':input.tvc,
+    'setProduts':setProduts,
+    'produts':produts
   }
 
 

@@ -2,11 +2,13 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import TextField  from '@mui/material/TextField';
 import Styles from '../Styles/form.module.scss';
-import {handlePercentageChange} from '../utils/InputsFunctions';
+import {handlePercentageChange,addProduct} from '../utils/InputsFunctions';
+import { Button } from '@mui/material';
 
 
 const Percentage = ({Percentagem}) => {
- const {percentages,setPercentages,setTotalPercentages,totalPercentages}= Percentagem;
+ const {percentages,setPercentages,setTotalPercentages,totalPercentages,FixedCost,
+  totalFixedCost,VariableCost,totalVariableCost,setProduts,produts}= Percentagem;
   
 
   return (
@@ -74,6 +76,21 @@ const Percentage = ({Percentagem}) => {
         <Col>
           <div className="text-center">
             <h6>{totalPercentages.toFixed(2)} %</h6>
+            <Button
+            onClick={()=>addProduct(FixedCost,
+            totalFixedCost,VariableCost,totalVariableCost,percentages,totalPercentages,setProduts,produts)}
+      variant="contained"
+      color="primary"
+      sx={{
+        width: '55%', // Makes the button take the full width of its container
+        '@media (max-width: 600px)': {
+          // Adjust the breakpoint as needed
+          width: '65%', // When the screen size is below 600px, reduce the width to 80%
+        },
+      }}
+    >
+      Calcular
+    </Button>
           </div>
         </Col>
       </Row>
