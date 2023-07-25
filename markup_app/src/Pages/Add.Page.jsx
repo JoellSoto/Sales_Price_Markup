@@ -4,6 +4,7 @@ import NavigateNext from '@mui/icons-material/NavigateNext';
 import NavigateBefore from '@mui/icons-material/NavigateBefore';
 import FixedCosts from '../Components/FixedCost.Component';
 import VariableCosts from '../Components/VariableCost.Component';
+import Percentage from '../Components/Percentage.Component';
 import { useState } from 'react';
 
 
@@ -11,7 +12,8 @@ export default function Add(){
     const [pageIndex,setPageIndex]=useState(0);
     const FIXEDPAGE=<FixedCosts/>;
     const VARIABLEPAGE=<VariableCosts/>;
-    const pages=[FIXEDPAGE,VARIABLEPAGE];
+    const PercentagePage=<Percentage/>
+    const pages=[FIXEDPAGE,VARIABLEPAGE,PercentagePage];
     
 
     const handlePrevious = () => {
@@ -19,7 +21,7 @@ export default function Add(){
       };
     
       const handleNext = () => {
-        setPageIndex(pageIndex===pageIndex.length-1? pageIndex:pageIndex + 1)
+        setPageIndex(pageIndex===pages.length-1? pageIndex:pageIndex + 1)
       };
 
     return(

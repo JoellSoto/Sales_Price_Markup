@@ -1,28 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Navbar, Nav, NavItem, Container } from 'reactstrap';
+import { Routes, Route } from 'react-router-dom';
+import {Container } from 'reactstrap';
 import Home from './Pages/Home';
 import FixedCosts from './Pages/Add.Page';
 import VariableCosts from './Pages/VariableCosts';
+import NavBarC from './Components/NavBar.Component';
+import Styles from './Styles/body.module.scss'
 
 const App = () => {
   return (
-  <>
-      <Navbar color="light" light expand="md">
-        <Container>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <Link to="/" className="nav-link">Home</Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/fixed-costs" className="nav-link">Custos Fixos</Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/variable-costs" className="nav-link">Custos Variáveis</Link>
-            </NavItem>
-          </Nav>
-        </Container>
-      </Navbar>
+  <div className={Styles.BodyLayout}>
+      <NavBarC/>
       <Container className="mt-4">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -30,7 +18,7 @@ const App = () => {
           <Route path="/variable-costs" element={<VariableCosts />} />
         </Routes>
       </Container>
-    </>
+    </div>
 
   );
 };

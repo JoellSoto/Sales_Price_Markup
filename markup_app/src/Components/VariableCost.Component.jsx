@@ -20,13 +20,14 @@ const VariableCosts = () => {
     <Container>
       <Row className="mt-4" >
         <Col>
-          <h5 className={Styles.title}>Introdução de Custos Variaveis</h5>
+          <h5 className={Styles.title}>Custos Variáveis </h5>
         </Col>
       </Row>
       <Container>
       <Row >
           <Col sm={6}>
             <TextField
+              margin="normal"
               key={0}
               label="Agua"
               name="agua"
@@ -38,6 +39,7 @@ const VariableCosts = () => {
           </Col>
           <Col sm={6} >
             <TextField
+              margin="normal"
               key={1}
               label="Luz"
               name="luz"
@@ -48,9 +50,10 @@ const VariableCosts = () => {
             />   
           </Col>
         </Row>
-        <Row className="mt-4">
+        <Row>
           <Col sm={6}>
             <TextField
+              margin="normal"
               key={2}
               label="Taxas e licenças"
               name="taxas"
@@ -62,6 +65,7 @@ const VariableCosts = () => {
           </Col>
           <Col sm={6} >
             <TextField
+              margin="normal"
               key={3}
               label="Manutenção e reparos"
               name="reparos"
@@ -76,7 +80,7 @@ const VariableCosts = () => {
       <Row className="mt-3">
         <Col>
           <div className="text-center">
-            <h6>Custo variavel Total: {totalCost.toFixed(2)} Mts</h6>
+            <h6>{totalCost.toFixed(2)} Mts</h6>
           </div>
         </Col>
       </Row>

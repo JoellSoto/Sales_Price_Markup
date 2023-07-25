@@ -1,53 +1,51 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import TextField  from '@mui/material/TextField';
-import Styles from '../Styles/form.module.scss';
+import Styles from '../Styles/form.module.scss'
 
 
-const FixedCosts = () => {
+const Percentage = () => {
   const [costs, setCosts] = useState([0, 0, 0, 0, 0]);
   const [totalCost, setTotalCost] = useState(0);
-
-  
-  const handleChange = (index, value) => {
+  const handlePercentageChange = (index, value) => {
     const updatedCosts = [...costs];
-    updatedCosts[index] = parseFloat(value) || 0;
+    value=Math.min(Math.max(parseFloat(value), 0), 100)
+    updatedCosts[index] = value || 0;
     setCosts(updatedCosts);
     setTotalCost(updatedCosts.reduce((acc, curr) => acc + curr, 0));
   };
+  
 
   return (
     <Container>
       <Row className="mt-4" >
         <Col>
-          <h5 className={Styles.title}>Custos Fixos</h5>
+          <h5 className={Styles.title}>Percentagens</h5>
         </Col>
       </Row>
       <Container>
       <Row >
           <Col sm={6}>
             <TextField
-              className={Styles.inputElement}
               margin="normal"
               key={0}
-              label="Agua"
-              name="agua"
+              label="Lucro"
+              name="lucro"
               variant="standard"
               value={costs[0]}
-              onChange={(e) => handleChange(0, e.target.value)}
+              onChange={(e) => handlePercentageChange(0, e.target.value)}
               fullWidth
             />   
           </Col>
           <Col sm={6} >
             <TextField
-              className={Styles.inputElement}
               margin="normal"
               key={1}
-              label="Luz"
-              name="luz"
+              label="Cartão"
+              name="cartao"
               variant="standard"
               value={costs[1]}
-              onChange={(e) => handleChange(1, e.target.value)}
+              onChange={(e) => handlePercentageChange(1, e.target.value)}
               fullWidth
             />   
           </Col>
@@ -55,27 +53,25 @@ const FixedCosts = () => {
         <Row>
           <Col sm={6}>
             <TextField
-              className={Styles.inputElement}
               margin="normal"
               key={2}
-              label="Taxas e licenças"
-              name="taxas"
+              label="IVA"
+              name="iva"
               variant="standard"
               value={costs[2]}
-              onChange={(e) => handleChange(2, e.target.value)}
+              onChange={(e) => handlePercentageChange(2, e.target.value)}
               fullWidth
             />   
           </Col>
           <Col sm={6} >
             <TextField
-              className={Styles.inputElement}
               margin="normal"
               key={3}
               label="Manutenção e reparos"
               name="reparos"
               variant="standard"
               value={costs[3]}
-              onChange={(e) => handleChange(3, e.target.value)}
+              onChange={(e) => handlePercentageChange(3, e.target.value)}
               fullWidth
             />   
           </Col>
@@ -84,7 +80,7 @@ const FixedCosts = () => {
       <Row className="mt-3">
         <Col>
           <div className="text-center">
-            <h6>{totalCost.toFixed(2)} Mts</h6>
+            <h6>{totalCost.toFixed(2)} %</h6>
           </div>
         </Col>
       </Row>
@@ -92,4 +88,4 @@ const FixedCosts = () => {
   );
 };
 
-export default FixedCosts;
+export default Percentage;
