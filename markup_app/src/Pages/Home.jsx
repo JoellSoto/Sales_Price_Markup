@@ -1,29 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Container, Row, Col, Button } from 'reactstrap';
-
-const Home = () => {
+//import { Link } from 'react-router-dom';
+import { Container} from 'reactstrap';
+import Styles from '../Styles/pages.module.scss';
+const Home = ({produts}) => {
+  
   return (
-    <Container>
-      <Row className="mt-4">
-        <Col>
-          <h5 className="text-center">Bem-vindo ao Sistema de Custos</h5>
-        </Col>
-      </Row>
-      <Row className="mt-4">
-        <Col>
-          <Button tag={Link} to="/fixed-costs" color="primary" block>
-            Introdução de Custos Fixos
-          </Button>
-        </Col>
-      </Row>
-      <Row className="mt-2">
-        <Col>
-          <Button tag={Link} to="/variable-costs" color="primary" block>
-            Introdução de Custos Variáveis
-          </Button>
-        </Col>
-      </Row>
+    <Container className={Styles.pages}>
+      <div className={Styles.priceContainer}>
+        
+      </div>
     </Container>
   );
 };

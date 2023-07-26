@@ -8,7 +8,7 @@ import { Button } from '@mui/material';
 
 const Percentage = ({Percentagem}) => {
  const {percentages,setPercentages,setTotalPercentages,totalPercentages,FixedCost,
-  totalFixedCost,VariableCost,totalVariableCost,setProduts,produts}= Percentagem;
+  totalFixedCost,VariableCost,totalVariableCost,setProduts,produts,metaData}= Percentagem;
   
 
   return (
@@ -78,7 +78,7 @@ const Percentage = ({Percentagem}) => {
             <h6>{totalPercentages.toFixed(2)} %</h6>
             <Button
             onClick={()=>addProduct(FixedCost,
-            totalFixedCost,VariableCost,totalVariableCost,percentages,totalPercentages,setProduts,produts)}
+            totalFixedCost,VariableCost,totalVariableCost,percentages,totalPercentages,setProduts,produts,metaData)}
       variant="contained"
       color="primary"
       sx={{

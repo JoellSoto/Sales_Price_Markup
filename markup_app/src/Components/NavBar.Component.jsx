@@ -13,7 +13,7 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import AdbIcon from '@mui/icons-material/Adb';
+//import AdbIcon from '@mui/icons-material/Adb';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
@@ -35,7 +35,7 @@ function DrawerAppBar(props) {
       <Typography variant="h6" sx={{ my: 2 }}>
         Joel Soto
       </Typography>
-      <Divider />
+      <Divider/>
       <List>
           <ListItem key={'Pagina Inicial'} disablePadding onClick={()=>navigate('/')}>
             <ListItemButton sx={{ textAlign: 'center' }}>
@@ -56,7 +56,7 @@ function DrawerAppBar(props) {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
+      <CssBaseline/>
       <AppBar component="nav">
       
         <Toolbar>
@@ -67,20 +67,18 @@ function DrawerAppBar(props) {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
-           
-            <MenuIcon />
-          
+            <MenuIcon/>
           </IconButton>
           <Typography
+            onClick={()=>navigate('/')}
             variant="h5"
             noWrap
             component="a"
             href=""
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontSize:20,
+              display: { xs: 'flex' },
+              fontSize:22,
               fontFamily: 'monospace',
               fontWeight: 600,
               color: 'inherit',
@@ -94,7 +92,7 @@ function DrawerAppBar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Sistema De Precificação
+            
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item,index) => (

@@ -15,6 +15,7 @@ const App = () => {
   const [Percentages, setPercentages] = useState([0, 0, 0, 0, 0]);
   const [totalPercentages, setTotalPercentages] = useState(0);
   const [produts,setProduts]=useState([]);
+  const [metaData,setMetaData]=useState(['',0]);
 
   const inputPrices={
     'fc':FixedCost,
@@ -22,13 +23,15 @@ const App = () => {
     'vc':VariableCosts,
     'svc':setVariableCosts,
     'pc':Percentages,
-   'sp':setPercentages,
-   'tfc':totalFixedCost,
-   'tvc':totalVariableCost,
-   'tpc':totalPercentages,
-   'stfc':setTotalFixedCost,
-   'stvc':setTotalVariableCost,
-   'stp':setTotalPercentages
+    'sp':setPercentages,
+    'tfc':totalFixedCost,
+    'tvc':totalVariableCost,
+    'tpc':totalPercentages,
+    'stfc':setTotalFixedCost,
+    'stvc':setTotalVariableCost,
+    'stp':setTotalPercentages,
+    'metadata':metaData,
+    'setMetada':setMetaData
   };
   return (
   <div className={Styles.BodyLayout}>
@@ -37,7 +40,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home produts={produts}/>} />
           <Route path="/addPrice" element={<AddPrice  input={inputPrices} produts={produts} setProduts={setProduts}/>} />
-         
         </Routes>
       </Container>
     </div>

@@ -5,10 +5,15 @@ import NavigateBefore from '@mui/icons-material/NavigateBefore';
 import FixedCosts from '../Components/FixedCost.Component';
 import VariableCosts from '../Components/VariableCost.Component';
 import Percentage from '../Components/Percentage.Component';
+import Meta from '../Components/MetaData.Component';
 import { useState } from 'react';
 
 
 export default function Add({input,setProduts,produts}){
+  const METADATA={
+    'metadata':input.metadata,
+    'setMetada':input.setMetada
+  }
   const FIXED={
     'FixedCost':input.fc,
     'setFixedCosts':input.sfc,
@@ -21,6 +26,7 @@ export default function Add({input,setProduts,produts}){
     'totalVariableCost':input.tvc,
     'setTotalVariableCost':input.stvc
   }
+
   const PERCENTAGE={
     'percentages':input.pc,
     'setPercentages':input.sp,
@@ -37,11 +43,12 @@ export default function Add({input,setProduts,produts}){
 
 
   const [pageIndex,setPageIndex]=useState(0);
+  const METADATAPAGE=<Meta Metadata={METADATA}/>
   const FIXEDPAGE=<FixedCosts Fixed={FIXED}/>;
   const VARIABLEPAGE=<VariableCosts Variable={VARIABLE}/>;
-  const PercentagePage=<Percentage Percentagem={PERCENTAGE}/>
+  const PERCENTAGEPAGE=<Percentage Percentagem={PERCENTAGE}/>
 
-    const pages=[FIXEDPAGE,VARIABLEPAGE,PercentagePage];
+    const pages=[METADATAPAGE,FIXEDPAGE,VARIABLEPAGE,PERCENTAGEPAGE];
     
 
     const handlePrevious = () => {
