@@ -17,13 +17,14 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
     const updatedCosts = [...costs];
     updatedCosts[index] = value|| '';
     setCosts(updatedCosts);
-    console.log(updatedCosts);
+    
     
   }
 
   export  const  addProduct = async (FixedCost,
     totalFixedCost,VariableCost,totalVariableCost,percentages,totalPercentages,setProduts,produts,metaData)=>{
     //Meta data
+    console.log(metaData);
     const nome=metaData[0];
     const quantidade=parseFloat(metaData[1]);
    
@@ -69,10 +70,12 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
         cartao:cartao,
         iva:iva,
         reserva:reserva,
-        totalPercentage:totalPercentage
+        totalPercentage:totalPercentage,
+        one_totalPercentage:1-(totalPercentage/100)
     }  
      let ar=produts
      ar.push(Produto)
      await setProduts(ar)
+     console.log(produts);
   }
 

@@ -33,6 +33,7 @@ export default function Add({input,setProduts,produts}){
     'setTotalPercentages':input.stp,
     'totalPercentages':input.tpc,
 
+    'metaData':input.metadata,
     'FixedCost':input.fc,
     'totalFixedCost':input.tfc,
     'VariableCost':input.vc,
