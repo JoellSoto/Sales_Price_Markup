@@ -2,7 +2,6 @@ import Styles from '../Styles/form.module.scss'
 import IconButton from '@mui/material/IconButton';
 import NavigateNext from '@mui/icons-material/NavigateNext';
 import NavigateBefore from '@mui/icons-material/NavigateBefore';
-import FixedCosts from '../Components/FixedCost.Component';
 import VariableCosts from '../Components/VariableCost.Component';
 import Percentage from '../Components/Percentage.Component';
 import Meta from '../Components/MetaData.Component';
@@ -14,12 +13,7 @@ export default function Add({input,setProduts,produts}){
     'metadata':input.metadata,
     'setMetada':input.setMetada
   }
-  const FIXED={
-    'FixedCost':input.fc,
-    'setFixedCosts':input.sfc,
-    'totalFixedCost':input.tfc,
-    'setTotalFixedCost':input.stfc      
-  } 
+ 
   const VARIABLE={
     'setVariableCosts':input.svc,
     'VariableCost':input.vc,
@@ -32,7 +26,6 @@ export default function Add({input,setProduts,produts}){
     'setPercentages':input.sp,
     'setTotalPercentages':input.stp,
     'totalPercentages':input.tpc,
-
     'metaData':input.metadata,
     'FixedCost':input.fc,
     'totalFixedCost':input.tfc,
@@ -45,11 +38,10 @@ export default function Add({input,setProduts,produts}){
 
   const [pageIndex,setPageIndex]=useState(0);
   const METADATAPAGE=<Meta Metadata={METADATA}/>
-  const FIXEDPAGE=<FixedCosts Fixed={FIXED}/>;
   const VARIABLEPAGE=<VariableCosts Variable={VARIABLE}/>;
   const PERCENTAGEPAGE=<Percentage Percentagem={PERCENTAGE}/>
 
-    const pages=[METADATAPAGE,FIXEDPAGE,VARIABLEPAGE,PERCENTAGEPAGE];
+    const pages=[METADATAPAGE,VARIABLEPAGE,PERCENTAGEPAGE];
     
 
     const handlePrevious = () => {

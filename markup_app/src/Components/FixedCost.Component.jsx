@@ -2,11 +2,14 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import TextField  from '@mui/material/TextField';
 import Styles from '../Styles/form.module.scss';
-import {handleChange} from '../utils/InputsFunctions'
+import {handleChange} from '../utils/InputsFunctions';
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 
 const FixedCosts = ({Fixed}) => {
-   const{FixedCost,setFixedCosts,totalFixedCost,setTotalFixedCost}=Fixed
+   const{FixedCost,setFixedCosts,totalFixedCost,setTotalFixedCost}=Fixed;
+   const navigate = useNavigate();
  
 
   return (
@@ -78,6 +81,18 @@ const FixedCosts = ({Fixed}) => {
         <Col>
           <div className="text-center">
             <h6>{totalFixedCost.toFixed(2)} Mts</h6>
+            <Button
+              onClick={()=>navigate('/')}
+              variant="contained"
+              color="primary"
+              sx={{
+                width: '55%',
+                '@media (max-width: 600px)': {
+                  width: '65%',
+                },}}
+            >
+              Salvar
+            </Button>
           </div>
         </Col>
       </Row>

@@ -1,11 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import {Container } from 'reactstrap';
+import { Container } from 'reactstrap';
 import Home from './Pages/Home';
-import AddPrice from './Pages/Add.Page'
+import AddProduct from './Pages/AddProduct.Page';
 import NavBarC from './Components/NavBar.Component';
-import Styles from './Styles/body.module.scss'
+import Styles from './Styles/body.module.scss';
+import AddFixedCosts from './Pages/AddFixedCost.Page';
 
 const App = () => {
   const [FixedCost, setFixedCosts] = useState([0, 0, 0, 0, 0]);
@@ -17,9 +18,15 @@ const App = () => {
   const [produts,setProduts]=useState([]);
   const [metaData,setMetaData]=useState(['',0]);
 
-  const inputPrices={
+  const FIXED={
+    'FixedCost':FixedCost,
+    'setFixedCosts':setFixedCosts,
+    'totalFixedCost':totalFixedCost,
+    'setTotalFixedCost':setTotalFixedCost     
+  } 
+
+  const inputProduct={
     'fc':FixedCost,
-    'sfc':setFixedCosts,
     'vc':VariableCosts,
     'svc':setVariableCosts,
     'pc':Percentages,
@@ -27,7 +34,6 @@ const App = () => {
     'tfc':totalFixedCost,
     'tvc':totalVariableCost,
     'tpc':totalPercentages,
-    'stfc':setTotalFixedCost,
     'stvc':setTotalVariableCost,
     'stp':setTotalPercentages,
     'metadata':metaData,
@@ -38,8 +44,9 @@ const App = () => {
       <NavBarC/>
       <Container className="mt-4">
         <Routes>
-          <Route path="/" element={<Home produts={produts}/>} />
-          <Route path="/addPrice" element={<AddPrice  input={inputPrices} produts={produts} setProduts={setProduts}/>} />
+          <Route path="/fixed-costs" element={<AddFixedCosts Fixed={FIXED}/>}/>
+          <Route path="/" element={<Home produts={produts}/>}/>
+          <Route path="/addProduct" element={<AddProduct  input={inputProduct} produts={produts} setProduts={setProduts}/>} />
         </Routes>
       </Container>
     </div>

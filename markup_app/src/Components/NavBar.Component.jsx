@@ -17,9 +17,10 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
+
 const drawerWidth = 240;
-const navItems = ['Pagina Inicial','Novo Preço', 'Tutorial', 'Histórico','Perfil'];
-const navigation =['/','addPrice'];
+const navItems = ['Pagina Inicial','Novo Produto', 'Custos Fixos', 'Histórico','Perfil'];
+const navigation =['/','addProduct','fixed-costs'];
 
 function DrawerAppBar(props) {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ function DrawerAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Joel Soto
+        Menu
       </Typography>
       <Divider/>
       <List>
@@ -42,11 +43,17 @@ function DrawerAppBar(props) {
               <ListItemText primary={'Pagina Inicial'} />
             </ListItemButton>
           </ListItem>
-          <ListItem key={'Preços'} disablePadding>
+          <ListItem key={'fixed-costs'} onClick={()=>navigate('fixed-costs')} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={'Preços'} />
+              <ListItemText primary={'Custos Fixos'} />
             </ListItemButton>
           </ListItem>
+          <ListItem key={'produtos'} onClick={()=>navigate('addProduct')} disablePadding>
+            <ListItemButton sx={{ textAlign: 'center' }}>
+              <ListItemText primary={'Novo Produto'} />
+            </ListItemButton>
+          </ListItem>
+          
       </List>
     </Box>
     

@@ -82,10 +82,10 @@ const Percentage = ({Percentagem}) => {
       variant="contained"
       color="primary"
       sx={{
-        width: '55%', // Makes the button take the full width of its container
+        width: '55%',
+
         '@media (max-width: 600px)': {
-          // Adjust the breakpoint as needed
-          width: '65%', // When the screen size is below 600px, reduce the width to 80%
+          width: '65%',
         },
       }}
     >

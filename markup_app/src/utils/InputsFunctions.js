@@ -1,3 +1,4 @@
+import {fixedCostPerProduct,unityCost,recomendedPrice} from './utils'
 
 export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost) => {
     const updatedCosts = [...costs];
@@ -23,8 +24,8 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
 
   export  const  addProduct = async (FixedCost,
     totalFixedCost,VariableCost,totalVariableCost,percentages,totalPercentages,setProduts,produts,metaData)=>{
-    //Meta data
-    console.log(metaData);
+    
+      //Meta data
     const nome=metaData[0];
     const quantidade=parseFloat(metaData[1]);
    
@@ -36,11 +37,11 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
     const totalFixed=totalFixedCost;
     
     //Variables values
-    const agua1=VariableCost[0];
-    const luz1=VariableCost[1];
-    const taxas1=VariableCost[2];
-    const manuntacao1=VariableCost[3];
-    const totalVariable=totalVariableCost;
+    const  agua1= await VariableCost[0];
+    const luz1=await VariableCost[1];
+    const taxas1=await VariableCost[2];
+    const manuntacao1=await VariableCost[3];
+    const totalVariable=await totalVariableCost;
 
     //Percentages Values
     const lucro=percentages[0];
@@ -48,6 +49,11 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
     const iva=percentages[2];
     const reserva=percentages[3]; 
     const totalPercentage=totalPercentages; 
+
+    //Recomended price calculation
+    const FixedCostPerProduct=fixedCostPerProduct(totalFixed,quantidade);
+    const UnityCost=unityCost(FixedCostPerProduct,totalVariable);
+    const RecomendedPrice=recomendedPrice(UnityCost,(1-(totalPercentage/100)))
     
     //produto a ser adicionado
     const Produto={
@@ -71,11 +77,15 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
         iva:iva,
         reserva:reserva,
         totalPercentage:totalPercentage,
-        one_totalPercentage:1-(totalPercentage/100)
+
+        fixedCostPerProduct:FixedCostPerProduct,
+        unityCost:UnityCost,
+        recomendedPrice:RecomendedPrice
     }  
-     let ar=produts
-     ar.push(Produto)
-     await setProduts(ar)
-     console.log(produts);
+   
+
+     let ar=produts;
+     ar.push(Produto);
+     await setProduts(ar);
   }
 
