@@ -22,7 +22,7 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
     
   }
 
-  export  const  addProduct = async (FixedCost,
+  export  const  handleProduct = async (id,FixedCost,
     totalFixedCost,VariableCost,totalVariableCost,percentages,totalPercentages,setProduts,produts,metaData)=>{
     
       //Meta data
@@ -85,7 +85,9 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
    
 
      let ar=produts;
-     ar.push(Produto);
+     id!==-1?ar[id]=Produto:ar.push(Produto);
      await setProduts(ar);
   }
+
+  
 

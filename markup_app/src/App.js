@@ -45,8 +45,8 @@ const App = () => {
       <Container className="mt-4">
         <Routes>
           <Route path="/fixed-costs" element={<AddFixedCosts Fixed={FIXED}/>}/>
-          <Route path="/" element={<Home produts={produts}/>}/>
-          <Route path="/addProduct" element={<AddProduct  input={inputProduct} produts={produts} setProduts={setProduts}/>} />
+          <Route path="/" element={<Home input={inputProduct} produts={produts} setProduts={setProduts}/>}/>
+          <Route path="/addProduct" element={<AddProduct id={-1} input={inputProduct} produts={produts} setProduts={setProduts}/>} />
         </Routes>
       </Container>
     </div>

@@ -1,13 +1,18 @@
 
 import Styles from '../Styles/pages.module.scss';
 import { Typography } from '@mui/material';
+const PriceList=({input,setProduts,produts})=>{
 
-const PriceList=({Produts})=>{
-     
+       const handleSelect=async(product,index)=>{
+        product.id=index;
+        console.log(product);
+        //input.svc([product.agua,])
+
+       }
     return (
         <div className={Styles.totalPricesContainer}>
-            {Produts.map((item)=>
-                <div className={Styles.priceContainer} >
+            {produts.map((item,idx)=>
+                <div className={Styles.priceContainer} key={idx} onClick={()=>handleSelect(item,idx)}>
                   <span className={Styles.prices}>
                 <Typography
                 

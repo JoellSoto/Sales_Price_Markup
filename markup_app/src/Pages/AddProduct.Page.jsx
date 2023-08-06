@@ -8,7 +8,7 @@ import Meta from '../Components/MetaData.Component';
 import { useState } from 'react';
 
 
-export default function Add({input,setProduts,produts}){
+export default function Add({input,setProduts,produts,id}){
   const METADATA={
     'metadata':input.metadata,
     'setMetada':input.setMetada
@@ -32,7 +32,8 @@ export default function Add({input,setProduts,produts}){
     'VariableCost':input.vc,
     'totalVariableCost':input.tvc,
     'setProduts':setProduts,
-    'produts':produts
+    'produts':produts,
+    'id':id
   }
 
 
@@ -40,31 +41,28 @@ export default function Add({input,setProduts,produts}){
   const METADATAPAGE=<Meta Metadata={METADATA}/>
   const VARIABLEPAGE=<VariableCosts Variable={VARIABLE}/>;
   const PERCENTAGEPAGE=<Percentage Percentagem={PERCENTAGE}/>
-
-    const pages=[METADATAPAGE,VARIABLEPAGE,PERCENTAGEPAGE];
+  const pages=[METADATAPAGE,VARIABLEPAGE,PERCENTAGEPAGE];
     
 
-    const handlePrevious = () => {
-        setPageIndex(pageIndex===0? pageIndex:pageIndex- 1)
-      };
+  const handlePrevious = () => {
+    setPageIndex(pageIndex===0? pageIndex:pageIndex- 1)
+  };
     
-      const handleNext = () => {
-        setPageIndex(pageIndex===pages.length-1? pageIndex:pageIndex + 1)
-      };
+  const handleNext = () => {
+    setPageIndex(pageIndex===pages.length-1? pageIndex:pageIndex + 1)
+  };
 
-    return(
-       <div className={Styles.inputContainer}>
-        
-         {pages[pageIndex]}
-            <div className={Styles.prevNexbuttons}>    
-                <IconButton onClick={handlePrevious}>
-                    <NavigateBefore /> <span className={Styles.textVisibleSize}>Anterior</span>
-                </IconButton>
-                <IconButton onClick={handleNext}>
-                <span className={Styles.textVisibleSize}>Proximo</span><NavigateNext />
-                </IconButton>
-            </div>    
-        
-        </div>
+  return(
+    <div className={Styles.inputContainer}>
+      {pages[pageIndex]}
+      <div className={Styles.prevNexbuttons}>    
+        <IconButton onClick={handlePrevious}>
+          <NavigateBefore /> <span className={Styles.textVisibleSize}>Anterior</span>
+        </IconButton>
+        <IconButton onClick={handleNext}>
+          <span className={Styles.textVisibleSize}>Proximo</span><NavigateNext />
+        </IconButton>
+      </div>      
+    </div>
     )
 }
