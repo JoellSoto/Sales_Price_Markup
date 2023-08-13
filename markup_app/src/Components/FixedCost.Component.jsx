@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import TextField  from '@mui/material/TextField';
 import Styles from '../Styles/form.module.scss';
-import {handleChange} from '../utils/InputsFunctions';
+import {handleChangeFixed as handleChange} from '../utils/InputsFunctions';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
@@ -26,7 +26,7 @@ const FixedCosts = ({Fixed}) => {
               className={Styles.inputElement}
               margin="normal"
               key={0}
-              label="Agua"
+              label="Agua e Luz"
               name="agua"
               variant="standard"
               value={FixedCost[0]}
@@ -39,7 +39,7 @@ const FixedCosts = ({Fixed}) => {
               className={Styles.inputElement}
               margin="normal"
               key={1}
-              label="Luz"
+              label="Salarios"
               name="luz"
               variant="standard"
               value={FixedCost[1]}
@@ -54,8 +54,8 @@ const FixedCosts = ({Fixed}) => {
               className={Styles.inputElement}
               margin="normal"
               key={2}
-              label="Taxas e licenças"
-              name="taxas"
+              label="Aluguer"
+              name="aluguer"
               variant="standard"
               value={FixedCost[2]}
               onChange={(e) => handleChange(2, e.target.value,setFixedCosts,FixedCost,setTotalFixedCost)}
@@ -67,8 +67,8 @@ const FixedCosts = ({Fixed}) => {
               className={Styles.inputElement}
               margin="normal"
               key={3}
-              label="Manutenção e reparos"
-              name="reparos"
+              label="Quantidade de Produtos"
+              name="qty"
               variant="standard"
               value={FixedCost[3]}
               onChange={(e) => handleChange(3, e.target.value,setFixedCosts,FixedCost,setTotalFixedCost)}

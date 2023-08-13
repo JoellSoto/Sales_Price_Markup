@@ -53,7 +53,7 @@ export default function Add({input,setProduts,produts,id}){
   };
 
   return(
-    <div className={Styles.inputContainer}>
+  <div className={Styles.inputContainer}>
       {pages[pageIndex]}
       <div className={Styles.prevNexbuttons}>    
         <IconButton onClick={handlePrevious}>

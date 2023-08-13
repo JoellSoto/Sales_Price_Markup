@@ -8,9 +8,16 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
     setTotalCost(updatedCosts.reduce((acc, curr) => acc + curr, 0));
   };
 
- export  const handleChange = (index, value,setCosts,costs,setTotalCost) => {
+ export  const handleChangeFixed = (index, value,setCosts,costs,setTotalCost) => {
     const updatedCosts = [...costs];
-    updatedCosts[index] = parseFloat(value) || 0;
+    updatedCosts[index] = parseFloat(value) ||0;
+    setCosts(updatedCosts);
+    setTotalCost(updatedCosts.slice(0, -2).reduce((acc, curr) => acc + curr, 0));
+  }
+
+  export  const handleChange = (index, value,setCosts,costs,setTotalCost) => {
+    const updatedCosts = [...costs];
+    updatedCosts[index] = parseFloat(value) ||0;
     setCosts(updatedCosts);
     setTotalCost(updatedCosts.reduce((acc, curr) => acc + curr, 0));
   }
@@ -27,21 +34,28 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
     
       //Meta data
     const nome=metaData[0];
-    const quantidade=parseFloat(metaData[1]);
+    
    
     //Fixed values 
-    const agua=FixedCost[0];
-    const luz=FixedCost[1];
-    const taxas=FixedCost[2];
-    const manuntacao=FixedCost[3];
+    const agua_luz=FixedCost[0];
+    const salarios=FixedCost[1];
+    const aluguer=FixedCost[2];
+    const quantidade=FixedCost[3];
     const totalFixed=totalFixedCost;
     
-    //Variables values
-    const  agua1= await VariableCost[0];
-    const luz1=await VariableCost[1];
-    const taxas1=await VariableCost[2];
-    const manuntacao1=await VariableCost[3];
-    const totalVariable=await totalVariableCost;
+    /*Variables values
+    const  transporte=  VariableCost[0];
+    const tecido= VariableCost[1];
+    const madeira= VariableCost[2];
+    const esponja= VariableCost[3];
+    const cola = VariableCost[4];
+    const pano_cru = VariableCost[5];
+    const algodao = VariableCost[6];
+    const agrafo = VariableCost[7];
+    const prego = VariableCost[8];
+    const parafuso = VariableCost[9];
+    const linha = VariableCost[10];*/
+    const totalVariable= totalVariableCost;
 
     //Percentages Values
     const lucro=percentages[0];
@@ -55,21 +69,28 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
     const UnityCost=unityCost(FixedCostPerProduct,totalVariable);
     const RecomendedPrice=recomendedPrice(UnityCost,(1-(totalPercentage/100)))
     
-    //produto a ser adicionado
+    //Product to be added
     const Produto={
         nome:nome,
         quantidade:quantidade,  
 
-        agua:agua,
-        luz:luz,
-        taxas:taxas,
-        manuntacao:manuntacao,
+        agua_luz:agua_luz,
+        salarios:salarios,
+        aluguer:aluguer,
         totalFixedCost:totalFixed,
 
-        agua1:agua1,
-        luz1:luz1,
-        taxas1:taxas1,
-        manuntacao1:manuntacao1,
+
+        transporte: VariableCost[0],
+        tecido:VariableCost[1],
+        madeira: VariableCost[2],
+        esponja: VariableCost[3],
+        cola: VariableCost[4],
+        pano_cru:VariableCost[5],
+        algodao: VariableCost[6],
+        agrafo: VariableCost[7],
+        prego: VariableCost[8],
+        parafuso: VariableCost[9],
+        linha: VariableCost[10],
         totalVariableCost:totalVariable,
 
         lucro:lucro,
@@ -87,6 +108,7 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
      let ar=produts;
      id!==-1?ar[id]=Produto:ar.push(Produto);
      await setProduts(ar);
+     await localStorage.setItem("Products",JSON.stringify(ar))
   }
 
   

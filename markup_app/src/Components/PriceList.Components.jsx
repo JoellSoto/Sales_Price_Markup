@@ -82,6 +82,7 @@ const PriceList=({input,setProduts,produts})=>{
               >
                {parseInt(item.recomendedPrice)} Mts
               </Typography>
+             
              </span> 
             </div> 
              

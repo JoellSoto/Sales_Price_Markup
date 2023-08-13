@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import Home from './Pages/Home';
@@ -11,13 +11,25 @@ import AddFixedCosts from './Pages/AddFixedCost.Page';
 const App = () => {
   const [FixedCost, setFixedCosts] = useState([0, 0, 0, 0, 0]);
   const [totalFixedCost, setTotalFixedCost] = useState(0);
-  const [VariableCosts, setVariableCosts] = useState([0, 0, 0, 0, 0]);
+  const [VariableCosts, setVariableCosts] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [totalVariableCost, setTotalVariableCost] = useState(0);
   const [Percentages, setPercentages] = useState([0, 0, 0, 0, 0]);
   const [totalPercentages, setTotalPercentages] = useState(0);
   const [produts,setProduts]=useState([]);
-  const [metaData,setMetaData]=useState(['',0]);
+  const [metaData,setMetaData]=useState(['']);
+ 
 
+
+  useEffect(
+    ()=>{
+      const data=localStorage.getItem("Products");
+      if(data){
+        setProduts(JSON.parse(data));
+        console.log(localStorage.getItem("Products"))
+      }
+    }
+  ,[])
+ 
   const FIXED={
     'FixedCost':FixedCost,
     'setFixedCosts':setFixedCosts,

@@ -7,7 +7,7 @@ import {handleChange} from '../utils/InputsFunctions';
 
 const VariableCosts = ({Variable}) => {
    const {setVariableCosts,VariableCost,totalVariableCost,setTotalVariableCost}=Variable;
-
+    const variableCostLables=["transporte","Tecido","Madeira","espoja","Cola","Pano Cru","Algodão","Agrafos","prego","Parafusos","linha"];
   return (
     <Container>
       <Row className="mt-4" >
@@ -17,57 +17,21 @@ const VariableCosts = ({Variable}) => {
       </Row>
       <Container>
       <Row >
-          <Col sm={6}>
+          {VariableCost.map((item,index)=>{
+           return(<Col sm={6}>
             <TextField
               margin="normal"
-              key={0}
-              label="Agua"
+              key={index}
+              label={variableCostLables[index]}
               name="agua"
               variant="standard"
-              value={VariableCost[0]}
-              onChange={(e) => handleChange(0, e.target.value,setVariableCosts,VariableCost,setTotalVariableCost)}
+              value={parseFloat(item)}
+              onChange={(e) => handleChange(index, e.target.value,setVariableCosts,VariableCost,setTotalVariableCost)}
               fullWidth
             />   
-          </Col>
-          <Col sm={6} >
-            <TextField
-              margin="normal"
-              key={1}
-              label="Luz"
-              name="luz"
-              variant="standard"
-              value={VariableCost[1]}
-              onChange={(e) => handleChange(1, e.target.value,setVariableCosts,VariableCost,setTotalVariableCost)}
-              fullWidth
-            />   
-          </Col>
+          </Col>)})}
         </Row>
-        <Row>
-          <Col sm={6}>
-            <TextField
-              margin="normal"
-              key={2}
-              label="Taxas e licenças"
-              name="taxas"
-              variant="standard"
-              value={VariableCost[2]}
-              onChange={(e) => handleChange(2, e.target.value,setVariableCosts,VariableCost,setTotalVariableCost)}
-              fullWidth
-            />   
-          </Col>
-          <Col sm={6} >
-            <TextField
-              margin="normal"
-              key={3}
-              label="Manutenção e reparos"
-              name="reparos"
-              variant="standard"
-              value={VariableCost[3]}
-              onChange={(e) => handleChange(3, e.target.value,setVariableCosts,VariableCost,setTotalVariableCost)}
-              fullWidth
-            />   
-          </Col>
-        </Row>
+      
       </Container>
       <Row className="mt-3">
         <Col>

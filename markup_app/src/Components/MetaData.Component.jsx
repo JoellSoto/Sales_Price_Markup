@@ -17,8 +17,8 @@ const Meta = ({Metadata}) => {
         </Col>
       </Row>
       <Container>
-      <Row >
-          <Col sm={6}>
+      <Row className={Styles.centerElement}>
+          <Col sm={6} >
             <TextField
               className={Styles.inputElement}
               margin="normal"
@@ -35,15 +35,14 @@ const Meta = ({Metadata}) => {
             <TextField
               className={Styles.inputElement}
               margin="normal"
-              key={1}
-              label="Quantidade de Produtos"
-              name="qty"
+              key={0}
+              label="Descrição"
+              name="descricao"
               variant="standard"
-              value={metadata[1]}
-              onChange={(e) => handleChangeString(1,parseFloat(e.target.value),setMetada,metadata)}
               fullWidth
             />   
           </Col>
+         
         </Row>
         
       </Container>
