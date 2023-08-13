@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { Container } from 'reactstrap';
+import Home from './Pages/Home';
+import AddProduct from './Pages/AddProduct.Page';
+import NavBarC from './Components/NavBar.Component';
+import Styles from './Styles/body.module.scss';
+import AddFixedCosts from './Pages/AddFixedCost.Page';
 
-function App() {
+const App = () => {
+  const [FixedCost, setFixedCosts] = useState([0, 0, 0, 0, 0]);
+  const [totalFixedCost, setTotalFixedCost] = useState(0);
+  const [VariableCosts, setVariableCosts] = useState([0, 0, 0, 0, 0]);
+  const [totalVariableCost, setTotalVariableCost] = useState(0);
+  const [Percentages, setPercentages] = useState([0, 0, 0, 0, 0]);
+  const [totalPercentages, setTotalPercentages] = useState(0);
+  const [produts,setProduts]=useState([]);
+  const [metaData,setMetaData]=useState(['',0]);
+
+  const FIXED={
+    'FixedCost':FixedCost,
+    'setFixedCosts':setFixedCosts,
+    'totalFixedCost':totalFixedCost,
+    'setTotalFixedCost':setTotalFixedCost     
+  } 
+
+  const inputProduct={
+    'fc':FixedCost,
+    'vc':VariableCosts,
+    'svc':setVariableCosts,
+    'pc':Percentages,
+    'sp':setPercentages,
+    'tfc':totalFixedCost,
+    'tvc':totalVariableCost,
+    'tpc':totalPercentages,
+    'stvc':setTotalVariableCost,
+    'stp':setTotalPercentages,
+    'metadata':metaData,
+    'setMetada':setMetaData
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  <div className={Styles.BodyLayout}>
+      <NavBarC/>
+      <Container className="mt-4">
+        <Routes>
+          <Route path="/fixed-costs" element={<AddFixedCosts Fixed={FIXED}/>}/>
+          <Route path="/" element={<Home input={inputProduct} produts={produts} setProduts={setProduts}/>}/>
+          <Route path="/addProduct" element={<AddProduct id={-1} input={inputProduct} produts={produts} setProduts={setProduts}/>} />
+        </Routes>
+      </Container>
     </div>
+
   );
-}
+};
 
 export default App;

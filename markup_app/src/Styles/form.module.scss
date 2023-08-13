@@ -1,0 +1,58 @@
+$small: 450px;
+$medium: 900px;
+
+
+.inputElement{
+    font-family: Helvetica;
+    font-weight: 600;
+}
+.inputContainer{
+    background-color: white;
+    padding: 1rem 2rem 1.2rem 2rem;
+    border-radius: 10px;
+    box-shadow: -1px 0px 5px 2px rgba(26, 15, 147, 0.20);
+
+      @media screen and (min-width: $medium) {
+        margin: 0 auto;
+        max-width:750px;
+        margin-top: 150px;
+        height: 335px;
+        display: grid;
+        grid-template-columns: 1;
+        grid-template-rows: 2;
+      }
+      @media screen and (max-width: $small){
+        width:93%;
+        margin: 0 auto;
+        margin-top: 25%;
+      }
+    
+}
+.textVisibleSize{
+    font-size: 14px;
+
+    @media screen and (max-width: $small) {
+        display: none;   
+      }
+}
+.prevNexbuttons{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+
+    @media screen and (min-width: $medium) {
+        
+      }
+      @media screen and (max-width: $small) {
+       margin-top: 3%;   
+      }
+    
+}
+.title{
+    display: flex;
+    justify-content: center;
+    font-family: Helvetica;
+    font-weight: 600;
+    color: black;
+}
+
