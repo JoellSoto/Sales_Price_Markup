@@ -108,8 +108,14 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
      let ar=produts;
      id!==-1?ar[id]=Produto:ar.push(Produto);
      await setProduts(ar);
-     await localStorage.setItem("Products",JSON.stringify(ar))
+     await localStorage.setItem("Products",JSON.stringify(ar));
   }
+ export  const deleteItem= async(products,setProduts,id)=>{
+    let aux=products;
+    setProduts(aux.splice(id,1));
+    await localStorage.setItem("Products",JSON.stringify(aux));
+ }
+  
 
   
 

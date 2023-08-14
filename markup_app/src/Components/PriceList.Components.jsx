@@ -1,18 +1,30 @@
-
+import IconButton from '@mui/material/IconButton';
+import {useState} from 'react'
+import DeleteIcon from '@mui/icons-material/Delete';
 import Styles from '../Styles/pages.module.scss';
 import { Typography } from '@mui/material';
-const PriceList=({input,setProduts,produts})=>{
+import {deleteItem} from '../utils/InputsFunctions';
+    const PriceList=({input,setProduts,produts})=>{
+      
+       const [iconColor, setIconColor] = useState('white');
+       const handleDeleteClick = async(idx) => {
+        setIconColor('grey'); 
+        await deleteItem(produts,setProduts,idx);  
+        const data=localStorage.getItem("Products"); 
+        setProduts(JSON.parse(data));   
+      };
 
        const handleSelect=async(product,index)=>{
         product.id=index;
         console.log(product);
         //input.svc([product.agua,])
-
        }
     return (
         <div className={Styles.totalPricesContainer}>
+          <span>
             {produts.map((item,idx)=>
                 <div className={Styles.priceContainer} key={idx} onClick={()=>handleSelect(item,idx)}>
+                <span className={Styles.pricesTools}>
                   <span className={Styles.prices}>
                 <Typography
                 
@@ -46,7 +58,7 @@ const PriceList=({input,setProduts,produts})=>{
               >
                Preço 
               </Typography>
-              
+                  
               <Typography
                 sx={{
                   fontFamily: 'Verdana, Geneva, sans-serif',
@@ -83,12 +95,18 @@ const PriceList=({input,setProduts,produts})=>{
                {parseInt(item.recomendedPrice)} Mts
               </Typography>
              
-             </span> 
+             </span>
+              <IconButton onClick={()=>handleDeleteClick(idx)}>
+                <DeleteIcon style={{ color: iconColor }} />
+              </IconButton>
+             
+             </span>  
             </div> 
              
-              
+             
     
-             )}
+             )} 
+             </span>
         </div>)
     
 }
