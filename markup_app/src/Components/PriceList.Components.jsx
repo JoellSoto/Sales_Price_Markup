@@ -16,8 +16,6 @@ import {deleteItem} from '../utils/InputsFunctions';
 
        const handleSelect=async(product,index)=>{
         product.id=index;
-        console.log(product);
-        //input.svc([product.agua,])
        }
     return (
         <div className={Styles.totalPricesContainer}>
@@ -97,7 +95,7 @@ import {deleteItem} from '../utils/InputsFunctions';
              
              </span>
               <IconButton onClick={()=>handleDeleteClick(idx)}>
-                <DeleteIcon style={{ color: iconColor }} />
+                <DeleteIcon style={{ color: iconColor }} className={Styles.deleteButton}/>
               </IconButton>
              
              </span>  

@@ -4,9 +4,11 @@ import TextField  from '@mui/material/TextField';
 import Styles from '../Styles/form.module.scss';
 import {handlePercentageChange,handleProduct} from '../utils/InputsFunctions';
 import { Button } from '@mui/material';
+import { useNavigate } from "react-router-dom";
 
 
 const Percentage = ({Percentagem}) => {
+  const navigate = useNavigate();
  const {percentages,setPercentages,setTotalPercentages,totalPercentages,FixedCost,
   totalFixedCost,VariableCost,totalVariableCost,setProduts,produts,metaData,id}= Percentagem;
   
@@ -78,7 +80,7 @@ const Percentage = ({Percentagem}) => {
             <h6>{totalPercentages.toFixed(2)} %</h6>
             <Button
             onClick={()=>{handleProduct(id,FixedCost,
-            totalFixedCost,VariableCost,totalVariableCost,percentages,totalPercentages,setProduts,produts,metaData)}}
+            totalFixedCost,VariableCost,totalVariableCost,percentages,totalPercentages,setProduts,produts,metaData);navigate("/")}}
       variant="contained"
       color="primary"
       sx={{
