@@ -1,0 +1,8 @@
+{
+	"appId": "com.JSAPPS.price",
+	"appName": "Sistema de Precificação",
+	"webDir": "build",
+	"server": {
+		"androidScheme": "https"
+	}
+}

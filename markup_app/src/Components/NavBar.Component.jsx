@@ -13,7 +13,7 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-//import AdbIcon from '@mui/icons-material/Adb';
+import { styled } from '@mui/system';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,6 +21,17 @@ import { useNavigate } from 'react-router-dom';
 const drawerWidth = 240;
 const navItems = ['Pagina Inicial','Novo Produto', 'Custos Fixos', 'Histórico','Perfil'];
 const navigation =['/','addProduct','fixed-costs'];
+const StyledTypography = styled(Typography)({
+  display: 'flex',
+  justifyContent: 'center',
+  fontFamily: 'monospace',
+  fontWeight: 600,
+  color: 'inherit',
+  textDecoration: 'none',
+  cursor: 'pointer',
+  fontSize: 'clamp(18px, 5vw, 22px)', // Adjust the values as needed
+  // Other styles...
+});
 
 function DrawerAppBar(props) {
   const navigate = useNavigate();
@@ -76,24 +87,14 @@ function DrawerAppBar(props) {
           >
             <MenuIcon/>
           </IconButton>
-          <Typography
-            onClick={()=>navigate('/')}
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex' },
-              fontSize:22,
-              fontFamily: 'monospace',
-              fontWeight: 600,
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Sistema de Precificação 
-          </Typography>      
+          <StyledTypography
+      onClick={() => navigate('/')} // Make sure to import the necessary function for navigation
+      variant="h5"
+      component="a"
+      href=""
+    >
+      Sistema de Precificação
+    </StyledTypography>    
           <Typography
             variant="h6"
             component="div"

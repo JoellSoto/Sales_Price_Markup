@@ -24,10 +24,27 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: rgb(231, 229, 245); /* Replace with your desired background color */
+      }
+      .background-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(231, 229, 245); /* Replace with your desired background color */
+      z-index: -1; /* Place behind other content */
+    }
+    </style>
     <title>Sistema de Precificação</title>
   </head>
-  <body>
+  <body >
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="background-container"></div>
     <div id="root"></div>
     <!--
       This HTML file is a template.
