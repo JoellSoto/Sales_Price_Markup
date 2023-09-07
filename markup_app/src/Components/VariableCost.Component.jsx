@@ -7,7 +7,7 @@ import {handleChange} from '../utils/InputsFunctions';
 
 const VariableCosts = ({Variable}) => {
    const {setVariableCosts,VariableCost,totalVariableCost,setTotalVariableCost}=Variable;
-    const variableCostLables=["transporte","Tecido","Madeira","espoja","Cola","Pano Cru","Algodão","Agrafos","prego","Parafusos","linha"];
+    const variableCostLables=["transporte","Tecido","Madeira","espoja","Cola","Pano Cru","Algodão","Agrafos","Parafusos","linha"];
   return (
     <Container>
       <Row className="mt-4" >

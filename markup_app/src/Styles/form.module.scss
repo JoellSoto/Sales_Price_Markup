@@ -6,6 +6,30 @@ $medium: 900px;
     font-family: Helvetica;
     font-weight: 600;
 }
+
+.inputContainerLogin{
+  background-color: white;
+  padding: 1rem 2rem 1.2rem 2rem;
+  border-radius: 10px;
+  box-shadow: -1px 0px 5px 2px rgba(26, 15, 147, 0.20);
+
+    @media screen and (min-width: $medium) {
+      margin: 0 auto;
+      max-width:750px;
+      margin-top: 75px;
+      height: 600px;
+      width: 750px;
+    }
+    @media screen and (max-width: $small){
+      width:93%;
+      margin: 0 auto;
+      margin-top: 25%;
+    }
+  
+}
+
+
+
 .inputContainer{
     background-color: white;
     padding: 1rem 2rem 1.2rem 2rem;
@@ -61,3 +85,9 @@ $medium: 900px;
   justify-content: center;
 }
 
+.iconImage{
+  margin-top:-70px;
+  margin-bottom: -20px;
+  width: 300px;
+  height: 250px;
+}

@@ -88,9 +88,8 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
         pano_cru:VariableCost[5],
         algodao: VariableCost[6],
         agrafo: VariableCost[7],
-        prego: VariableCost[8],
-        parafuso: VariableCost[9],
-        linha: VariableCost[10],
+        parafuso: VariableCost[8],
+        linha: VariableCost[9],
         totalVariableCost:totalVariable,
 
         lucro:lucro,
