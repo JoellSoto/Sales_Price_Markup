@@ -6,7 +6,6 @@ import NavBar from '../Components/NavBar.Component';
 import Global from '../utils/Global';
 
 const Home = ({input,setProduts,produts}) => {
- console.log(Global.isLogin)
   return (
     <>
       <NavBar/>

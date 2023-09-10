@@ -53,10 +53,12 @@ export default function SignIn() {
             margin="normal"
             required
             fullWidth
-            id="email"
+            id="number"
             label="Número de celular"
-            name="email"
-            autoComplete="email"
+            name="number"
+            autoComplete="+258"
+            placeholder="+2588XXXXXXXX"
+            type="number"
             
             autoFocus
           />
