@@ -73,14 +73,13 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
     const Produto={
         nome:nome,
         quantidade:quantidade,  
-
         agua_luz:agua_luz,
         salarios:salarios,
         aluguer:aluguer,
         totalFixedCost:totalFixed,
 
 
-        transporte: VariableCost[0],
+        custos:[{transporte: VariableCost[0],
         tecido:VariableCost[1],
         madeira: VariableCost[2],
         esponja: VariableCost[3],
@@ -96,7 +95,7 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
         cartao:cartao,
         iva:iva,
         reserva:reserva,
-        totalPercentage:totalPercentage,
+        totalPercentage:totalPercentage}],
 
         fixedCostPerProduct:FixedCostPerProduct,
         unityCost:UnityCost,

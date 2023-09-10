@@ -8,6 +8,8 @@ import NavBarC from './Components/NavBar.Component';
 import Styles from './Styles/body.module.scss';
 import AddFixedCosts from './Pages/AddFixedCost.Page';
 import Login from './Pages/Login.Page'
+import ProtectedRoutes from './utils/ProtectedRoutes'
+import Page404 from './Pages/NotFound.Page'
 
 const App = () => {
   const [FixedCost, setFixedCosts] = useState([0, 0, 0, 0, 0]);
@@ -19,8 +21,6 @@ const App = () => {
   const [produts,setProduts]=useState([]);
   const [metaData,setMetaData]=useState(['']);
  
-
-
   useEffect(
     ()=>{
       const data=localStorage.getItem("Products");
@@ -55,11 +55,13 @@ const App = () => {
       <NavBarC/>
       <Container className="mt-4">
         <Routes>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/fixed-costs" element={<AddFixedCosts Fixed={FIXED}/>}/>
-          <Route path="/" element={<Home input={inputProduct} produts={produts} setProduts={setProduts}/>}/>
-          <Route path="/addProduct" element={<AddProduct id={-1} input={inputProduct} produts={produts} setProduts={setProduts}/>} />
-        </Routes>
+          <Route default path="/login" element={<Login/>}/>
+          <Route element={<ProtectedRoutes/>}>
+            <Route path="/fixed-costs" element={<AddFixedCosts Fixed={FIXED}/>}/>
+            <Route  exact path="/home" element={<Home input={inputProduct} produts={produts} setProduts={setProduts}/>}/>
+            <Route path="/addProduct" element={<AddProduct id={-1} input={inputProduct} produts={produts} setProduts={setProduts}/>} />
+          </Route>
+          <Route path='*' element={<Page404/>}/>        </Routes>
       </Container>
     </div>
 
