@@ -1,4 +1,4 @@
-$small: 450px;
+$small: 500px;
 $medium: 900px;
 
 .pages{
@@ -38,7 +38,11 @@ $medium: 900px;
 .pricesElementt{
   padding-left: 0px;
 }
-.priceContainer{
+.priceContainerDesktop{
+  margin: 100px;
+}
+
+.priceContainerMobile{
   @media screen and (min-width: $medium) { 
     display: none;
   }

@@ -20,7 +20,7 @@ import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
 const navItems = ['Pagina Inicial','Novo Produto', 'Custos Fixos', 'Histórico','Perfil'];
-const navigation =['/home','addProduct','fixed-costs'];
+const navigation =['/home','/addProduct','/fixed-costs'];
 const StyledTypography = styled(Typography)({
   display: 'flex',
   justifyContent: 'center',
@@ -54,12 +54,12 @@ function DrawerAppBar(props) {
               <ListItemText primary={'Pagina Inicial'} />
             </ListItemButton>
           </ListItem>
-          <ListItem key={'fixed-costs'} onClick={()=>navigate('fixed-costs')} disablePadding>
+          <ListItem key={'fixed-costs'} onClick={()=>navigate('/fixed-costs')} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
               <ListItemText primary={'Custos Fixos'} />
             </ListItemButton>
           </ListItem>
-          <ListItem key={'produtos'} onClick={()=>navigate('addProduct')} disablePadding>
+          <ListItem key={'produtos'} onClick={()=>navigate('/addProduct')} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
               <ListItemText primary={'Novo Produto'} />
             </ListItemButton>

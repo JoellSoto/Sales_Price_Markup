@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/system';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import Styles from '../Styles/navBar.module.scss';
 
 
 const drawerWidth = 240;
@@ -25,8 +26,12 @@ const StyledTypography = styled(Typography)({
   textDecoration: 'none',
   cursor: 'pointer',
   fontSize: 'clamp(18px, 5vw, 22px)', // Adjust the values as needed
+  flexGrow: 1,
+  textAlign: 'center',
   // Other styles...
 });
+
+
 
 function DrawerAppBar(props) {
   const navigate = useNavigate();
@@ -63,28 +68,48 @@ function DrawerAppBar(props) {
           >
             
           </IconButton>
-          <StyledTypography
-      sx={{ textAlign: 'center' }}
-      variant="h1"
-      component="a"
-      href=""
-    >
-      Sistema de Precificação
-    </StyledTypography>    
-          <Typography
-            variant="h1"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            
-          </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item,index) => (
-              <Button key={item} sx={{ color: '#fff' }} onClick={()=>navigate(navigation[index])}>
-                {item}
-              </Button>
-            ))}
-          </Box>
+          <span   className={Styles.navTitlemobile}>
+            <Typography
+              variant="h1"
+              component="div"
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                fontFamily: 'monospace',
+                fontWeight: 600,
+                color: 'inherit',
+                textDecoration: 'none',
+                cursor: 'pointer',
+                fontSize: 'clamp(18px, 5vw, 22px)', // Adjust the values as needed
+                flexGrow: 1,
+                textAlign: 'center',
+              }}
+            >
+              Sistema de Precificação 
+            </Typography>
+          </span>
+          <span   className={Styles.navTitleDesktop}>
+            <Typography
+              variant="h1"
+              component="div"
+              sx={{
+                display: 'flex',
+                justifyContent: 'start',
+                fontFamily: 'monospace',
+                fontWeight: 600,
+                color: 'inherit',
+                textDecoration: 'none',
+                cursor: 'pointer',
+                fontSize: 'clamp(18px, 5vw, 22px)', // Adjust the values as needed
+                flexGrow: 1,
+                textAlign: 'center',
+              }}
+
+            >
+              Sistema de Precificação 
+            </Typography>  
+          </span>  
+       
         </Toolbar>
         
       </AppBar>

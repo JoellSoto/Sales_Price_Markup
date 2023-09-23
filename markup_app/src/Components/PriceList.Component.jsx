@@ -21,7 +21,7 @@ import {deleteItem} from '../utils/InputsFunctions';
         <div className={Styles.totalPricesContainer}>
           <span>
             {produts.map((item,idx)=>
-                <div className={Styles.priceContainer} key={idx} onClick={()=>handleSelect(item,idx)}>
+                <div className={Styles.priceContainerMobile} key={idx+Math.random()/(Math.random()+1)} onClick={()=>handleSelect(item,idx)}>
                 <span className={Styles.pricesTools}>
                   <span className={Styles.prices}>
                 <Typography

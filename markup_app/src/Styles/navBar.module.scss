@@ -1,0 +1,30 @@
+$small: 500px;
+$medium: 900px;
+
+.navTitlemobile{
+    display: flex;
+    justify-content: center;
+    font-family: monospace;
+    font-weight: 600;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: clamp(18px, 5vw, 22px); // Adjust the values as needed
+    flex-grow: 1;
+    text-align: center;
+    @media screen and (min-width: $medium) { 
+        display: none
+    }
+  }
+.navTitleDesktop{
+    font-family: monospace;
+    font-weight: 600;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: clamp(18px, 5vw, 22px); // Adjust the values as needed
+    flex-grow: 1;
+    @media screen and (max-width: $medium){
+        display: none
+    }
+  }
