@@ -15,24 +15,45 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
-import NavBar from '../Components/NavBarLogin.Component '
-
+import NavBar from '../Components/NavBarLogin.Component ';
+import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {userExist} from '../utils/ProfileActions';
+import Global from "../utils/Global";
 
 export default function SignIn() {
-    const [showPassword, setShowPassword] = useState(false);
-
+  const [showPassword, setShowPassword] = useState(false);
+  const [contacto,setContacto]=useState();
+  const [pass,setPass]=useState();
+  const navigate= useNavigate();
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+      if(contacto && pass){
+      const user=
+      {
+        contact: contacto,
+        password: pass
+      }
+
+      if(userExist(user)){
+        toast.success("Login feito com Sucesso!");
+        Global.isLogin=true;
+        navigate("/");
+      } 
+      else{
+        toast.error("Utilizador não encontrado no sistema!");
+      } 
+    }
+    else{
+      toast.error("Preencha todos os Campos!");
+    }
+
+     
   };
 
   return (
@@ -52,6 +73,7 @@ export default function SignIn() {
           <TextField
             margin="normal"
             required
+            onChange={(e)=>setContacto(e.target.value)}
             fullWidth
             id="number"
             label="Número de celular"
@@ -66,7 +88,7 @@ export default function SignIn() {
             fullWidth variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
-         
+            onChange={(e)=>setPass(e.target.value)}
             id="outlined-adornment-password"
             type={showPassword ? 'text' : 'password'}
             endAdornment={
@@ -101,7 +123,7 @@ export default function SignIn() {
               
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link onClick={()=>navigate("/signup")} variant="body2">
                 {"Não tem conta? Crie aqui"}
               </Link>
             </Grid>

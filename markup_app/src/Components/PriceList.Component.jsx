@@ -3,6 +3,7 @@ import {useState} from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
 import Styles from '../Styles/pages.module.scss';
 import { Typography } from '@mui/material';
+import {activeUser} from '../utils/ProfileActions';
 import {deleteItem} from '../utils/InputsFunctions';
     const PriceList=({input,setProduts,produts})=>{
       
@@ -20,7 +21,8 @@ import {deleteItem} from '../utils/InputsFunctions';
     return (
         <div className={Styles.totalPricesContainer}>
           <span>
-            {produts.map((item,idx)=>
+            {produts.map((item,idx)=>{
+              if(item.user==activeUser()){
                 <div className={Styles.priceContainerMobile} key={idx+Math.random()/(Math.random()+1)} onClick={()=>handleSelect(item,idx)}>
                 <span className={Styles.pricesTools}>
                   <span className={Styles.prices}>
@@ -103,7 +105,7 @@ import {deleteItem} from '../utils/InputsFunctions';
              
              
     
-             )} 
+            }})} 
              </span>
         </div>)
     

@@ -1,4 +1,5 @@
 import {fixedCostPerProduct,unityCost,recomendedPrice} from './utils'
+import {activeUser} from './ProfileActions'
 
 export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost) => {
     const updatedCosts = [...costs];
@@ -99,7 +100,8 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
 
         fixedCostPerProduct:FixedCostPerProduct,
         unityCost:UnityCost,
-        recomendedPrice:RecomendedPrice
+        recomendedPrice:RecomendedPrice,
+        user:activeUser()
     }  
    
 

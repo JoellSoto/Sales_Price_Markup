@@ -11,6 +11,8 @@ import Login from './Pages/Login.Page';
 import SignUp from './Pages/SignUp.Page'
 import ProtectedRoutes from './utils/ProtectedRoutes'
 import Page404 from './Pages/NotFound.Page'
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const [FixedCost, setFixedCosts] = useState([0, 0, 0, 0, 0]);
@@ -54,6 +56,7 @@ const App = () => {
   return (
   <div className={Styles.BodyLayout}>
       <NavBarC/>
+      <ToastContainer />
       <Container className="mt-4">
         <Routes>
           <Route default path="/login" element={<Login/>}/>
