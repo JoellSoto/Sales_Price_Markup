@@ -15,35 +15,32 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Styles from '../Styles/pages.module.scss';
 
-function createData(name, calories, fat, carbs, protein, price) {
+function createData(name, productionCost, price,FixedCostPerProduct,costs) {
   return {
     name,
-    calories,
-    fat,
-    carbs,
-    protein,
+    productionCost,
     price,
-    history: [
-      {
-        date: '2020-01-05',
-        customerId: '11091700',
-        amount: 3,
-      },
-      {
-        date: '2020-01-02',
-        customerId: 'Anonymous',
-        amount: 1,
-      },
-    ],
+    FixedCostPerProduct,
+    custos: costs
   };
 }
+let rows=[]
+const makeRows=(produtos)=>{
+
+  produtos.forEach((produto,index)=>{
+    //console.log( createData(produto.nome,produto.unityCost,produto.recomendedPrice,produto.fixedCostPerProduct,produto.custos)  )
+    rows[index]=createData(produto.nome,produto.unityCost,produto.recomendedPrice,produto.fixedCostPerProduct,produto.custos)  
+  })
+}
+
+
 
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
 
   return (
-    <React.Fragment className={Styles.priceContainerDesktop}>
+    <React.Fragment>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
         <TableCell>
           <IconButton
@@ -54,41 +51,59 @@ function Row(props) {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
+        <TableCell align="center">
           {row.name}
         </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
+        <TableCell align="center">{row.FixedCostPerProduct} Mts</TableCell>
+        <TableCell align="center">{row.productionCost} Mts</TableCell>
+        <TableCell align="center">{row.price} Mts</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
-                History
+                Dados de Entrada
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
+                    <TableCell align="center">Agrafo</TableCell>
+                    <TableCell align="center">Algodao</TableCell>
+                    <TableCell align="center">Cartão</TableCell>
+                    <TableCell align="center">Cola</TableCell>
+                    <TableCell align="center">Esponja</TableCell>
+                    <TableCell align="center">Linha</TableCell>
+                    <TableCell align="center">Madeira</TableCell>
+                    <TableCell align="center">Pano Cru</TableCell>
+                    <TableCell align="center">Parafuso</TableCell>
+                    <TableCell align="center">Tecido</TableCell>
+                    <TableCell align="center">Transporte</TableCell>
+                    <TableCell align="center">IVA</TableCell>
+                    <TableCell align="center">Lucro</TableCell>
+
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">
-                        {historyRow.date}
+                  {row.custos.map((custosRow) => (
+                    <TableRow key={custosRow.agrafo}>
+                      <TableCell align="center">
+                        {custosRow.agrafo} Mts
                       </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
+                      <TableCell align="center">
+                        {custosRow.algodao} Mts
                       </TableCell>
+                      <TableCell align="center">{custosRow.cartao} Mts</TableCell>
+                      <TableCell align="center">{custosRow.cola} Mts</TableCell>
+                      <TableCell align="center">{custosRow.esponja} Mts</TableCell>
+                      <TableCell align="center">{custosRow.linha} Mts</TableCell>
+                      <TableCell align="center">{custosRow.madeira} Mts</TableCell>
+                      <TableCell align="center">{custosRow.pano_cru} Mts</TableCell>
+                      <TableCell align="center">{custosRow.parafuso} Mts</TableCell>
+                      <TableCell align="center">{custosRow.tecido} Mts</TableCell>
+                      <TableCell align="center">{custosRow.transporte} Mts</TableCell>
+                      <TableCell align="center">{custosRow.iva} %</TableCell>
+                      <TableCell align="center">{custosRow.lucro} %</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -103,40 +118,45 @@ function Row(props) {
 
 Row.propTypes = {
   row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    history: PropTypes.arrayOf(
+   
+    custos: PropTypes.arrayOf(
       PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
+        cartao: PropTypes.number.isRequired,
+        cola: PropTypes.number.isRequired,
+        esponja: PropTypes.number.isRequired,
+        iva: PropTypes.number.isRequired,
+        linha: PropTypes.number.isRequired,
+        lucro: PropTypes.number.isRequired,
+        madeira: PropTypes.number.isRequired,
+        pano_cru: PropTypes.number.isRequired,
+        parafuso: PropTypes.number.isRequired,
+        reserva: PropTypes.number.isRequired,
+        tecido: PropTypes.number.isRequired,
+        transporte: PropTypes.number.isRequired,
       }),
     ).isRequired,
     name: PropTypes.string.isRequired,
+    productionCost: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
   }).isRequired,
 };
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 3.99),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 4.99),
-  createData('Eclair', 262, 16.0, 24, 6.0, 3.79),
-  createData('Cupcake', 305, 3.7, 67, 4.3, 2.5),
-  createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
-];
 
-export default function CollapsibleTable() {
+
+
+export default function CollapsibleTable({produts}) {
+  makeRows(produts)
   return (
+    <div className={Styles.priceContainerDesktop}>
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
-            <TableCell />
-            <TableCell>Produto</TableCell>
-            <TableCell align="right">Custo de Produção</TableCell>
-            <TableCell align="right">Preço de Venda</TableCell>
+           <TableCell/>
+           <TableCell align="center">Produto</TableCell>
+            <TableCell align="center">Custo Fixo por produto</TableCell>
+            <TableCell align="center">Custo de Produção</TableCell>
+            <TableCell align="center">Preço de Venda</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -146,5 +166,6 @@ export default function CollapsibleTable() {
         </TableBody>
       </Table>
     </TableContainer>
+  </div>  
   );
 }

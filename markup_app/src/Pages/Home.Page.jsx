@@ -12,7 +12,7 @@ const Home = ({input,setProduts,produts}) => {
       <NavBar />
       <Container className={Styles.pages}>
         <PriceListMobile produts={produts} input={input} setProduts={setProduts}/>
-        <PriceListDesktop />
+        <PriceListDesktop produts={produts}/>
       </Container>
     </>
   );

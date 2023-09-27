@@ -82,7 +82,7 @@ const FixedCosts = ({Fixed}) => {
           <div className="text-center">
             <h6>{totalFixedCost.toFixed(2)} Mts</h6>
             <Button
-              onClick={()=>navigate('/home')}
+              onClick={()=>navigate('/')}
               variant="contained"
               color="primary"
               sx={{

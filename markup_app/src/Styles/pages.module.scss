@@ -39,7 +39,11 @@ $medium: 900px;
   padding-left: 0px;
 }
 .priceContainerDesktop{
-  margin: 100px;
+  margin-top: 100px;
+  width: 100%;
+  @media screen and (max-width: $small) { 
+    display: none;
+  }
 }
 
 .priceContainerMobile{
