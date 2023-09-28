@@ -1,7 +1,7 @@
 $small: 500px;
 $medium: 900px;
 
-.priceContainerMobile{
+.priceContainer{
     @media screen and (min-width:  $small) { 
       display: none;
     }
