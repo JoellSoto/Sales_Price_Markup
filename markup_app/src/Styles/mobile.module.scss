@@ -1,0 +1,53 @@
+$small: 500px;
+$medium: 900px;
+
+.priceContainerMobile{
+    @media screen and (min-width:  $small) { 
+      display: none;
+    }
+    @media screen and (max-width: $small){
+      display: grid;
+      grid-template-columns: 30% 30% 30% ;
+      padding: 2%;
+      padding-right: 0%;
+      padding-left: 5%;
+      margin-top: 5%;
+      height: 10vh;
+      width:90vw;
+      border: 2px solid blue;
+      border-radius: 15px;
+      box-shadow: 2px 2px 2px 2px rgba(26, 15, 147, 0.20);
+      background-color: antiquewhite;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 700;  
+    }
+  }
+  
+.deleteButton{
+    border: '2px solid black'
+    
+ }
+ .totalPricesContainer{
+    display: grid;
+    grid-template-columns: auto;
+  }
+  
+  .prices{
+    width: 90%;
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    column-gap: 2%; 
+  }
+  
+  .pricesTools{
+    width: 80vw;
+    display: grid;
+    grid-template-columns:90% auto;
+    padding-right: 10%;
+  }
+  .pricesElement{
+    padding-left: 7%;
+  }
+  .pricesElementt{
+    padding-left: 0px;
+  }  
