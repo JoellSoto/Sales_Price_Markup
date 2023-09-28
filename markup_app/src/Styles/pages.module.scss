@@ -14,6 +14,12 @@ $medium: 900px;
     margin-top: 15%;
   }
 }
+.menuHeader{
+  background-color: #3f50b5;
+  border: 4px solid #3f50b5;
+  border-radius: 45%;
+}
+
 .totalPricesContainer{
   display: grid;
   grid-template-columns: auto;

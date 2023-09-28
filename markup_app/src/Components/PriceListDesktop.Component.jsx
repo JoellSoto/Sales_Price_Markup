@@ -14,6 +14,11 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Styles from '../Styles/pages.module.scss';
+import { deleteItem } from '../utils/InputsFunctions';
+import { useNavigate } from 'react-router';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { style } from '@mui/system';
+
 
 function createData(name, productionCost, price,FixedCostPerProduct,costs) {
   return {
@@ -33,12 +38,17 @@ const makeRows=(produtos)=>{
   })
 }
 
+const handleDeleteClick = async(idx,produts,setProduts) => {
+  await deleteItem(produts,setProduts,idx);  
+  const data=localStorage.getItem("Products"); 
+  setProduts(JSON.parse(data));   
+};
 
 
 function Row(props) {
-  const { row } = props;
+  const { row,produts,setProduts,index } = props;
   const [open, setOpen] = React.useState(false);
-
+  let navigate = useNavigate()
   return (
     <React.Fragment>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -51,12 +61,13 @@ function Row(props) {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell align="center">
-          {row.name}
-        </TableCell>
+        <TableCell align="center">{row.name}</TableCell>
         <TableCell align="center">{row.FixedCostPerProduct} Mts</TableCell>
         <TableCell align="center">{row.productionCost} Mts</TableCell>
         <TableCell align="center">{row.price} Mts</TableCell>
+        <TableCell style={{cursor:'pointer'}} onClick={()=>{handleDeleteClick(index,produts,setProduts);window.location.reload()}} align="center"> 
+          <DeleteIcon className={Styles.deleteButton}/>
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -67,20 +78,20 @@ function Row(props) {
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
-                  <TableRow>
-                    <TableCell align="center">Agrafo</TableCell>
-                    <TableCell align="center">Algodao</TableCell>
-                    <TableCell align="center">Cartão</TableCell>
-                    <TableCell align="center">Cola</TableCell>
-                    <TableCell align="center">Esponja</TableCell>
-                    <TableCell align="center">Linha</TableCell>
-                    <TableCell align="center">Madeira</TableCell>
-                    <TableCell align="center">Pano Cru</TableCell>
-                    <TableCell align="center">Parafuso</TableCell>
-                    <TableCell align="center">Tecido</TableCell>
-                    <TableCell align="center">Transporte</TableCell>
-                    <TableCell align="center">IVA</TableCell>
-                    <TableCell align="center">Lucro</TableCell>
+                  <TableRow className={Styles.menuHeader}>
+                    <TableCell sx={{color:'white'}} align="center">Agrafo</TableCell>
+                    <TableCell sx={{color:'white'}} align="center">Algodao</TableCell>
+                    <TableCell sx={{color:'white'}} align="center">Cartão</TableCell>
+                    <TableCell sx={{color:'white'}} align="center">Cola</TableCell>
+                    <TableCell sx={{color:'white'}} align="center">Esponja</TableCell>
+                    <TableCell sx={{color:'white'}} align="center">Linha</TableCell>
+                    <TableCell sx={{color:'white'}} align="center">Madeira</TableCell>
+                    <TableCell sx={{color:'white'}} align="center">Pano Cru</TableCell>
+                    <TableCell sx={{color:'white'}} align="center">Parafuso</TableCell>
+                    <TableCell sx={{color:'white'}} align="center">Tecido</TableCell>
+                    <TableCell sx={{color:'white'}} align="center">Transporte</TableCell>
+                    <TableCell sx={{color:'white'}} align="center">IVA</TableCell>
+                    <TableCell sx={{color:'white'}} align="center">Lucro</TableCell>
 
                   </TableRow>
                 </TableHead>
@@ -144,24 +155,26 @@ Row.propTypes = {
 
 
 
-export default function CollapsibleTable({produts}) {
-  makeRows(produts)
+export default function CollapsibleTable({produts,setProduts}) {
+  makeRows(produts);
+
   return (
     <div className={Styles.priceContainerDesktop}>
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
         <TableHead>
-          <TableRow>
+          <TableRow className={Styles.menuHeader}>
            <TableCell/>
-           <TableCell align="center">Produto</TableCell>
-            <TableCell align="center">Custo Fixo por produto</TableCell>
-            <TableCell align="center">Custo de Produção</TableCell>
-            <TableCell align="center">Preço de Venda</TableCell>
+            <TableCell sx={{color:'white'}}  align="center">Produto</TableCell>
+            <TableCell sx={{color:'white'}} align="center">Custo Fixo por produto</TableCell>
+            <TableCell sx={{color:'white'}} align="center">Custo de Produção</TableCell>
+            <TableCell sx={{color:'white'}} align="center">Preço de Venda</TableCell>
+            <TableCell sx={{color:'white'}} align="center">Acções</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
+          {rows.map((row, index) => (
+            <Row key={row.name} row={row} index={index} produts={produts} setProduts={setProduts} />
           ))}
         </TableBody>
       </Table>

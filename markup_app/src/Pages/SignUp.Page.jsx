@@ -15,10 +15,10 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import NavBar from '../Components/NavBarLogin.Component '
 import {addUser,userExist} from '../utils/ProfileActions';
-import Global from "../utils/Global";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { saveLocally } from '../utils/utils';
 
 
 export default function SignIn() {
@@ -27,7 +27,6 @@ export default function SignIn() {
   const [pass,setPass]=useState();
   const navigate= useNavigate();
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
@@ -45,7 +44,7 @@ export default function SignIn() {
         else{
           addUser(user);
           toast.success("Conta criada, Bem Vindo!");
-          Global.isLogin=true;
+          saveLocally(true,"isLogin");
           navigate("/");
         } 
         

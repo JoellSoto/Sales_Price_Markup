@@ -20,13 +20,13 @@ import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {userExist} from '../utils/ProfileActions';
-import Global from "../utils/Global";
+import { saveLocally } from '../utils/utils';
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [contacto,setContacto]=useState();
   const [pass,setPass]=useState();
-  const navigate= useNavigate();
+  const navigate=useNavigate();
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -42,7 +42,7 @@ export default function SignIn() {
 
       if(userExist(user)){
         toast.success("Login feito com Sucesso!");
-        Global.isLogin=true;
+        saveLocally(true,"isLogin");
         navigate("/");
       } 
       else{

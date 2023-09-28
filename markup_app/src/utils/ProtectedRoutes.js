@@ -1,9 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom"
-import Global from "./Global";
-
+import {getSavedLocally} from './utils'
 export default function ProtectedRoutes(){
+  const status = getSavedLocally("isLogin")
    return(
-     Global.isLogin?<Outlet/>:<Navigate to="/login"/>
+    status?<Outlet/>:<Navigate to="/login"/>
    )
 
 }

@@ -80,7 +80,7 @@ const Percentage = ({Percentagem}) => {
             <h6>{totalPercentages.toFixed(2)} %</h6>
             <Button
             onClick={()=>{handleProduct(id,FixedCost,
-            totalFixedCost,VariableCost,totalVariableCost,percentages,totalPercentages,setProduts,produts,metaData);navigate("/home")}}
+            totalFixedCost,VariableCost,totalVariableCost,percentages,totalPercentages,setProduts,produts,metaData);navigate("/")}}
       variant="contained"
       color="primary"
       sx={{
