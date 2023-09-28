@@ -20,10 +20,11 @@ import {deleteItem} from '../utils/InputsFunctions';
        }
     return (
         <div className={Styles.totalPricesContainer}>
+          yooooooo
           <span>
             {produts.map((item,idx)=>{
-              if(item.user===activeUser()){
-                <div className={Styles.priceContainerMobile} key={idx+Math.random()/(Math.random()+1)} onClick={()=>handleSelect(item,idx)}>
+              
+                <div className={Styles.priceContainerMobile} key={idx+Math.random()} onClick={()=>handleSelect(item,idx)}>
                 <span className={Styles.pricesTools}>
                   <span className={Styles.prices}>
                 <Typography
@@ -105,7 +106,7 @@ import {deleteItem} from '../utils/InputsFunctions';
              
              
     
-            }})}
+             })}
              </span>
         </div>)
     

@@ -16,11 +16,12 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/system';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import { saveLocally } from '../utils/utils';
 
 
 const drawerWidth = 240;
-const navItems = ['Pagina Inicial','Novo Produto', 'Custos Fixos', 'Histórico','Perfil'];
-const navigation =['/','/addProduct','/fixed-costs'];
+const navItems = ['Pagina Inicial','Novo Produto', 'Custos Fixos', 'Histórico','Perfil','Sair'];
+const navigation =['/','/addProduct','/fixed-costs','/login'];
 const StyledTypography = styled(Typography)({
   display: 'flex',
   justifyContent: 'center',
@@ -32,6 +33,10 @@ const StyledTypography = styled(Typography)({
   fontSize: 'clamp(18px, 5vw, 22px)', // Adjust the values as needed
   // Other styles...
 });
+
+const onExit=()=>{
+  localStorage.setItem("isLogin","");
+}
 
 function DrawerAppBar(props) {
   const navigate = useNavigate();
@@ -64,7 +69,11 @@ function DrawerAppBar(props) {
               <ListItemText primary={'Novo Produto'} />
             </ListItemButton>
           </ListItem>
-          
+          <ListItem key={'sair'} onClick={()=>{onExit();navigate('/login')}} disablePadding>
+            <ListItemButton sx={{ textAlign: 'center' }}>
+              <ListItemText primary={'Sair'} />
+            </ListItemButton>
+          </ListItem>
       </List>
     </Box>
     
@@ -104,7 +113,7 @@ function DrawerAppBar(props) {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item,index) => (
-              <Button key={item} sx={{ color: '#fff' }} onClick={()=>navigate(navigation[index])}>
+              <Button key={item} sx={{ color: '#fff' }} onClick={()=>{if(item==='sair'){onExit();navigate(navigation[index])}else navigate(navigation[index])}}>
                 {item}
               </Button>
             ))}
