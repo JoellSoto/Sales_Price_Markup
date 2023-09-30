@@ -63,10 +63,11 @@ const App = () => {
           <Route default path="/signup" element={<SignUp/>}/>
           <Route element={<ProtectedRoutes/>}>
             <Route path="/fixed-costs" element={<AddFixedCosts Fixed={FIXED}/>}/>
-            <Route  exact path="/" element={<Home input={inputProduct} produts={produts} setProduts={setProduts}/>}/>
+            <Route   path="/" element={<Home input={inputProduct} produts={produts} setProduts={setProduts}/>}/>
             <Route path="/addProduct" element={<AddProduct id={-1} input={inputProduct} produts={produts} setProduts={setProduts}/>} />
           </Route>
-          <Route path='*' element={<Page404/>}/>        </Routes>
+          <Route path='*' element={<Page404/>}/>        
+        </Routes>
       </Container>
     </div>
 

@@ -9,6 +9,7 @@ import { useState } from 'react';
 
 
 export default function Add({input,setProduts,produts,id}){
+
   const METADATA={
     'metadata':input.metadata,
     'setMetada':input.setMetada

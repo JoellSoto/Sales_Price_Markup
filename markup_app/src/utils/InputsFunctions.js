@@ -18,7 +18,7 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
 
   export  const handleChange = (index, value,setCosts,costs,setTotalCost) => {
     const updatedCosts = [...costs];
-    updatedCosts[index] = parseFloat(value) ||0;
+    updatedCosts[index] = Number(value) ||0;
     setCosts(updatedCosts);
     setTotalCost(updatedCosts.reduce((acc, curr) => acc + curr, 0));
   }
@@ -106,6 +106,7 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
    
 
      let ar=produts;
+     console.log(ar)
      id!==-1?ar[id]=Produto:ar.push(Produto);
      await setProduts(ar);
      await localStorage.setItem("Products",JSON.stringify(ar));

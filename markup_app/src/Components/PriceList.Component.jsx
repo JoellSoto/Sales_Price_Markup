@@ -5,8 +5,11 @@ import Styles from '../Styles/mobile.module.scss'
 import { Typography } from '@mui/material';
 import {activeUser} from '../utils/ProfileActions';
 import {deleteItem} from '../utils/InputsFunctions';
-    const PriceList=({input,setProduts,produts})=>{
-      
+import AddProduct from '../Pages/AddProduct.Page'
+import View from './ViewModal.Component';
+import Modal from './modal.Component';
+
+    const PriceList=({input,setProduts,produts,isModalOpen,setPos,setProduct})=>{   
        const [iconColor, setIconColor] = useState('white');
        const handleDeleteClick = async(idx) => {
         setIconColor('grey'); 
@@ -14,9 +17,17 @@ import {deleteItem} from '../utils/InputsFunctions';
         const data=localStorage.getItem("Products"); 
         setProduts(JSON.parse(data));   
       };
-
        const handleSelect=async(product,index)=>{
-        
+        console.log(product)
+        input.svc([parseFloat(product.custos[0].transporte),parseFloat(product.custos[0].tecido),parseFloat(product.custos[0].madeira),parseFloat(product.custos[0].esponja),
+        parseFloat(product.custos[0].cola),parseFloat(product.custos[0].pano_cru),parseFloat(product.custos[0].algodao),parseFloat(product.custos[0].agrafo),parseFloat(product.custos[0].parafuso),parseFloat(product.custos[0].linha)]);
+        input.setMetada([product.nome]);
+        input.stvc(parseFloat(product.custos[0].totalVariableCost))
+        input.sp([parseFloat(product.custos[0].lucro),parseFloat(product.custos[0].cartao),parseFloat(product.custos[0].iva),parseFloat(product.custos[0].reserva)])
+        input.stp(parseFloat(product.custos[0].totalPercentage))
+        setProduct(product);
+        setPos(index);
+        isModalOpen(true);
        }
     return (<div className={Styles.totalPricesContainer}>
     <span>
