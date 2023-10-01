@@ -32,11 +32,14 @@ function createData(name, productionCost, price,FixedCostPerProduct,costs) {
 }
 let rows=[]
 const makeRows=(produtos)=>{
+  for(let i=0;i<produtos.length;i++){
+    rows[i]=createData(produtos[i].nome,produtos[i].unityCost,produtos[i].recomendedPrice,produtos[i].fixedCostPerProduct,produtos[i].custos)  
+  }
 
-  produtos.forEach((produto,index)=>{
+  /*produtos.forEach((produto,index)=>{
     //console.log( createData(produto.nome,produto.unityCost,produto.recomendedPrice,produto.fixedCostPerProduct,produto.custos)  )
     rows[index]=createData(produto.nome,produto.unityCost,produto.recomendedPrice,produto.fixedCostPerProduct,produto.custos)  
-  })
+  })*/
 }
 
 const handleDeleteClick = async(idx,produts,setProduts) => {
@@ -53,6 +56,7 @@ const handleSelect=async(product,index,input,setPos,isModalOpen,setProduct)=>{
   input.sp([parseFloat(product.custos[0].lucro),parseFloat(product.custos[0].cartao),parseFloat(product.custos[0].iva),parseFloat(product.custos[0].reserva)])
   input.stp(parseFloat(product.custos[0].totalPercentage))
   setProduct(product);
+  console.log(index)
   setPos(index);
   isModalOpen(true);
  }

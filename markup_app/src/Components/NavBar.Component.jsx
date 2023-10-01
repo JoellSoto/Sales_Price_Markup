@@ -16,8 +16,6 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/system';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import { saveLocally } from '../utils/utils';
-
 
 const drawerWidth = 240;
 const navItems = ['Pagina Inicial','Novo Produto', 'Custos Fixos','Perfil','Sair'];

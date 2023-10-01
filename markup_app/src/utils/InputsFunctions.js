@@ -106,7 +106,6 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
    
 
      let ar=produts;
-     console.log(ar)
      id!==-1?ar[id]=Produto:ar.push(Produto);
      await setProduts(ar);
      await localStorage.setItem("Products",JSON.stringify(ar));

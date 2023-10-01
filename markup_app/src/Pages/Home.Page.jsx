@@ -10,7 +10,7 @@ const Home = ({input,setProduts,produts}) => {
   const [product,setProduct]=useState({});
   const [pos,setPos]=useState(-1);
   const [openModal,setOpenModal]=useState(false);
-  const page= <AddProduct id={0} input={input} produts={produts} setProduts={setProduts} closeModal={setOpenModal}/>
+  const page= <AddProduct id={pos} input={input} produts={produts} setProduts={setProduts} closeModal={setOpenModal}/>
   return (
     <>
       <NavBar />
