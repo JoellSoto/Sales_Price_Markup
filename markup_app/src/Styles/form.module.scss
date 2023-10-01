@@ -28,7 +28,13 @@ $medium: 900px;
   
 }
 
-
+.scroll{
+  @media screen and (max-width: $small){
+    max-height: 50vh;
+    overflow-y: scroll;
+  }
+  
+}
 
 .inputContainer{
     background-color: white;

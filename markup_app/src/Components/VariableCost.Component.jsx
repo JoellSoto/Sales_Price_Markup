@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import TextField  from '@mui/material/TextField';
 import Styles from '../Styles/form.module.scss';
 import {handleChange} from '../utils/InputsFunctions';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 
 const VariableCosts = ({Variable}) => {
@@ -15,23 +16,27 @@ const VariableCosts = ({Variable}) => {
           <h5 className={Styles.title}>Custos Variáveis </h5>
         </Col>
       </Row>
-      <Container>
-      <Row >
-          {VariableCost.map((item,index)=>{
-           return(<Col sm={6}>
-            <TextField
-              margin="normal"
-              key={index}
-              label={variableCostLables[index]}
-              name="agua"
-              variant="standard"
-              value={parseFloat(item)}
-              onChange={(e) => handleChange(index, e.target.value,setVariableCosts,VariableCost,setTotalVariableCost)}
-              fullWidth
-            />   
-          </Col>)})}
+      <Container className={Styles.scroll}>
+      <span >
+        <Row >
+          
+            {VariableCost.map((item,index)=>{
+            return(<Col sm={6}>
+              <TextField
+                margin="normal"
+                key={index}
+                label={variableCostLables[index]}
+                name="agua"
+                variant="standard"
+                value={parseFloat(item)}
+                onChange={(e) => handleChange(index, e.target.value,setVariableCosts,VariableCost,setTotalVariableCost)}
+                fullWidth
+                type="number"
+              />   
+            </Col>)})}
+         
         </Row>
-      
+        </span>
       </Container>
       <Row className="mt-3">
         <Col>

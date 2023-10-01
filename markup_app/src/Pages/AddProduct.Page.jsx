@@ -8,7 +8,7 @@ import Meta from '../Components/MetaData.Component';
 import { useState } from 'react';
 
 
-export default function Add({input,setProduts,produts,id}){
+export default function Add({input,setProduts,produts,id,closeModal}){
 
   const METADATA={
     'metadata':input.metadata,
@@ -31,10 +31,13 @@ export default function Add({input,setProduts,produts,id}){
     'FixedCost':input.fc,
     'totalFixedCost':input.tfc,
     'VariableCost':input.vc,
+    'setTotalFixedCost':input.setTotalFixedCost,
+    'setFixedCosts':input.setFixedCosts,
     'totalVariableCost':input.tvc,
     'setProduts':setProduts,
     'produts':produts,
-    'id':id
+    'id':id,
+    'closeModal':closeModal
   }
 
 

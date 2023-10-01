@@ -51,7 +51,10 @@ const App = () => {
     'stvc':setTotalVariableCost,
     'stp':setTotalPercentages,
     'metadata':metaData,
-    'setMetada':setMetaData
+    'setMetada':setMetaData,
+    'setTotalFixedCost':setTotalFixedCost,
+    'setFixedCosts':setFixedCosts
+
   };
   return (
   <div className={Styles.BodyLayout}>

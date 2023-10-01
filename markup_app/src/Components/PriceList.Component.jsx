@@ -18,7 +18,6 @@ import Modal from './modal.Component';
         setProduts(JSON.parse(data));   
       };
        const handleSelect=async(product,index)=>{
-        console.log(product)
         input.svc([parseFloat(product.custos[0].transporte),parseFloat(product.custos[0].tecido),parseFloat(product.custos[0].madeira),parseFloat(product.custos[0].esponja),
         parseFloat(product.custos[0].cola),parseFloat(product.custos[0].pano_cru),parseFloat(product.custos[0].algodao),parseFloat(product.custos[0].agrafo),parseFloat(product.custos[0].parafuso),parseFloat(product.custos[0].linha)]);
         input.setMetada([product.nome]);

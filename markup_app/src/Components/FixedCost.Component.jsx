@@ -5,12 +5,29 @@ import Styles from '../Styles/form.module.scss';
 import {handleChangeFixed as handleChange} from '../utils/InputsFunctions';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 const FixedCosts = ({Fixed}) => {
    const{FixedCost,setFixedCosts,totalFixedCost,setTotalFixedCost}=Fixed;
    const navigate = useNavigate();
- 
+   const saveFixed=()=>{
+     localStorage.setItem("fixed",JSON.stringify(FixedCost))
+   }
+   useEffect(
+    ()=>{
+      const data=JSON.parse(localStorage.getItem("fixed"));
+      
+      if(data)
+      {
+        setFixedCosts(data);
+        let sum=0;
+        for(let i=0;i<data.length;i++)
+          sum+=data[i];
+          setTotalFixedCost(sum);
+      }
+    }
+  ,[])
 
   return (
     <Container>
@@ -82,7 +99,7 @@ const FixedCosts = ({Fixed}) => {
           <div className="text-center">
             <h6>{totalFixedCost.toFixed(2)} Mts</h6>
             <Button
-              onClick={()=>navigate('/')}
+              onClick={()=>{saveFixed();navigate('/')}}
               variant="contained"
               color="primary"
               sx={{

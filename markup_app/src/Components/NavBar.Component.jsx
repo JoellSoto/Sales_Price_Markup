@@ -20,8 +20,8 @@ import { saveLocally } from '../utils/utils';
 
 
 const drawerWidth = 240;
-const navItems = ['Pagina Inicial','Novo Produto', 'Custos Fixos', 'Histórico','Perfil','Sair'];
-const navigation =['/','/addProduct','/fixed-costs','/login'];
+const navItems = ['Pagina Inicial','Novo Produto', 'Custos Fixos','Perfil','Sair'];
+const navigation =['/','/addProduct','/fixed-costs','/','/login'];
 const StyledTypography = styled(Typography)({
   display: 'flex',
   justifyContent: 'center',

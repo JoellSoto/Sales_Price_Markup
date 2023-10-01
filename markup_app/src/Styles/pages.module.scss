@@ -6,7 +6,7 @@ $medium: 900px;
   justify-content: center;
 
   @media screen and (min-width: $medium) { 
-    width: 75%;
+    width: 80%;
     height: 96.5vh;
     background-color: white;
   }
@@ -20,6 +20,9 @@ $medium: 900px;
   border-radius: 45%;
 }
 
+.pointer{
+
+}
 
 .priceContainerDesktop{
   margin-top: 100px;

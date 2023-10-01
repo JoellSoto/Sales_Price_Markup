@@ -10,14 +10,14 @@ const Home = ({input,setProduts,produts}) => {
   const [product,setProduct]=useState({});
   const [pos,setPos]=useState(-1);
   const [openModal,setOpenModal]=useState(false);
-  const page= <AddProduct id={0} input={input} produts={produts} setProduts={setProduts}/>
+  const page= <AddProduct id={0} input={input} produts={produts} setProduts={setProduts} closeModal={setOpenModal}/>
   return (
     <>
       <NavBar />
       <Container className={Styles.pages}>
       <Modal onClose={setOpenModal} title="Editar o Producto" pages={page}  status={openModal}/>
         <PriceListMobile isModalOpen={setOpenModal} setProduct={setProduct} setPos={setPos} produts={produts} input={input} setProduts={setProduts}/>
-        <PriceListDesktop produts={produts} setProduts={setProduts}/>
+        <PriceListDesktop produts={produts} setProduts={setProduts} setProduct={setProduct} isModalOpen={setOpenModal} setPos={setPos} input={input}/>
       </Container>
     </>
   );

@@ -1,0 +1,15 @@
+$small: 500px;
+$medium: 900px;
+
+
+.modalBody{
+   
+
+    @media screen and (min-width: $medium) {
+        margin-top: 60px;
+    }
+    @media screen and (max-width: $small){
+        margin-top: 13.5%;
+    }
+    
+}
