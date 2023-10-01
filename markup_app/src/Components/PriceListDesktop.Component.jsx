@@ -15,10 +15,9 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Styles from '../Styles/pages.module.scss';
 import { deleteItem } from '../utils/InputsFunctions';
-import { useNavigate } from 'react-router';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { style } from '@mui/system';
+
 
 
 function createData(name, productionCost, price,FixedCostPerProduct,costs) {
@@ -48,23 +47,20 @@ const handleDeleteClick = async(idx,produts,setProduts) => {
   setProduts(JSON.parse(data));   
 };
 
-const handleSelect=async(product,index,input,setPos,isModalOpen,setProduct)=>{
+const handleSelect=async(product,index,input,setPos,isModalOpen)=>{
   input.svc([parseFloat(product.custos[0].transporte),parseFloat(product.custos[0].tecido),parseFloat(product.custos[0].madeira),parseFloat(product.custos[0].esponja),
   parseFloat(product.custos[0].cola),parseFloat(product.custos[0].pano_cru),parseFloat(product.custos[0].algodao),parseFloat(product.custos[0].agrafo),parseFloat(product.custos[0].parafuso),parseFloat(product.custos[0].linha)]);
   input.setMetada([product.nome]);
   input.stvc(parseFloat(product.custos[0].totalVariableCost))
   input.sp([parseFloat(product.custos[0].lucro),parseFloat(product.custos[0].cartao),parseFloat(product.custos[0].iva),parseFloat(product.custos[0].reserva)])
   input.stp(parseFloat(product.custos[0].totalPercentage))
-  setProduct(product);
-  console.log(index)
   setPos(index);
   isModalOpen(true);
  }
 
 function Row(props) {
-  const { row,produts,setProduts,index,input,setPos,isModalOpen,setProduct } = props;
+  const { row,produts,setProduts,index,input,setPos,isModalOpen } = props;
   const [open, setOpen] = React.useState(false);
-  let navigate = useNavigate()
   return (
     <React.Fragment>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -82,7 +78,7 @@ function Row(props) {
         <TableCell align="center">{row.productionCost} Mts</TableCell>
         <TableCell align="center">{row.price} Mts</TableCell>
         <TableCell  align="center"> 
-          <EditIcon style={{cursor:'pointer'}}  onClick={()=>handleSelect(produts[index],index,input,setPos,isModalOpen,setProduct)}/>
+          <EditIcon style={{cursor:'pointer'}}  onClick={()=>handleSelect(produts[index],index,input,setPos,isModalOpen)}/>
           <DeleteIcon style={{cursor:'pointer'}} className={Styles.deleteButton} onClick={()=>{handleDeleteClick(index,produts,setProduts);window.location.reload()}}/>
         </TableCell>
       </TableRow>
@@ -172,7 +168,7 @@ Row.propTypes = {
 
 
 
-export default function CollapsibleTable({input,setProduts,produts,isModalOpen,setPos,setProduct}) {
+export default function CollapsibleTable({input,setProduts,produts,isModalOpen,setPos}) {
   makeRows(produts);
 
   return (
@@ -191,7 +187,7 @@ export default function CollapsibleTable({input,setProduts,produts,isModalOpen,s
         </TableHead>
         <TableBody>
           {rows.map((row, index) => (
-            <Row key={row.name} row={row} setProduct={setProduct} setPos={setPos} input={input} isModalOpen={isModalOpen} index={index} produts={produts} setProduts={setProduts} />
+            <Row key={row.name} row={row}  setPos={setPos} input={input} isModalOpen={isModalOpen} index={index} produts={produts} setProduts={setProduts} />
           ))}
         </TableBody>
       </Table>

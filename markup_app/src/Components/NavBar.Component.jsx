@@ -16,6 +16,9 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/system';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import Profile from './Card'
+import Modal from './Profilemodal.Component '
+import { useState } from 'react';
 
 const drawerWidth = 240;
 const navItems = ['Pagina Inicial','Novo Produto', 'Custos Fixos','Perfil','Sair'];
@@ -34,13 +37,30 @@ const StyledTypography = styled(Typography)({
 
 const onExit=()=>{
   localStorage.setItem("isLogin","");
+  localStorage.setItem("logUser","");
 }
 
 function DrawerAppBar(props) {
   const navigate = useNavigate();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const [profile,setProfile]=useState(false);
+   const  exitModal=()=>{
+    setProfile(false)
+   }
+  const menuManagement=(item,index)=>{
+    if(item==='Sair'){
+      onExit();
+      navigate(navigation[index])}
+    else {
+      if(item==='Perfil'){
+        setProfile(true);
+        console.log("cheguei")
+      }else
+      navigate(navigation[index])
+    }
+   
+  }
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -111,7 +131,7 @@ function DrawerAppBar(props) {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item,index) => (
-              <Button key={item} sx={{ color: '#fff' }} onClick={()=>{if(item==='sair'){onExit();navigate(navigation[index])}else navigate(navigation[index])}}>
+              <Button key={item} sx={{ color: '#fff' }} onClick={()=>menuManagement(item,index)}>
                 {item}
               </Button>
             ))}
@@ -139,7 +159,8 @@ function DrawerAppBar(props) {
         </Drawer>
         
       </Box>
-      
+     
+      <Modal onClose={exitModal} onHide={exitModal} title="Perfil" pages={<Profile/>}  status={profile}/>
     </Box>
   );
 }

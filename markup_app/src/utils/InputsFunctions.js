@@ -31,7 +31,8 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
   }
 
   export  const  handleProduct = async (id,FixedCost,
-    totalFixedCost,VariableCost,totalVariableCost,percentages,totalPercentages,setProduts,produts,metaData)=>{
+    totalFixedCost,VariableCost,totalVariableCost,percentages
+    ,totalPercentages,setProduts,produts,metaData,setMetada,setVariableCosts,setPercentages)=>{
     
       //Meta data
     const nome=metaData[0];
@@ -109,6 +110,9 @@ export const handlePercentageChange = (index, value,setCosts,costs,setTotalCost)
      id!==-1?ar[id]=Produto:ar.push(Produto);
      await setProduts(ar);
      await localStorage.setItem("Products",JSON.stringify(ar));
+     setMetada(['']);
+     setVariableCosts([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+     setPercentages([0, 0, 0, 0, 0])
   }
  export  const deleteItem= async(products,setProduts,id)=>{
     let aux=products;

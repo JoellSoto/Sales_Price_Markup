@@ -14,7 +14,7 @@ import InputLabel from '@mui/material/InputLabel';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import NavBar from '../Components/NavBarLogin.Component '
-import {addUser,userExist} from '../utils/ProfileActions';
+import {addUser,userExists} from '../utils/ProfileActions';
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -38,7 +38,7 @@ export default function SignIn() {
           contact: contacto,
           password: pass
         }
-        if(userExist(user)){
+        if(userExists(user)){
           toast.error("O utilzador já existe no sistema!");
         } 
         else{

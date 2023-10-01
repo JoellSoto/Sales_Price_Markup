@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import TextField  from '@mui/material/TextField';
 import Styles from '../Styles/form.module.scss';
 import {handleChange} from '../utils/InputsFunctions';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import Title from './Title';
 
 
 const VariableCosts = ({Variable}) => {
@@ -13,7 +13,7 @@ const VariableCosts = ({Variable}) => {
     <Container>
       <Row className="mt-4" >
         <Col>
-          <h5 className={Styles.title}>Custos Variáveis </h5>
+          <span className={Styles.title}><Title>Custos Variáveis</Title></span>
         </Col>
       </Row>
       <Container className={Styles.scroll}>

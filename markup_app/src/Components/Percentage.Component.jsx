@@ -6,12 +6,37 @@ import {handlePercentageChange,handleProduct} from '../utils/InputsFunctions';
 import { Button } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Title from './Title';
 
 const Percentage = ({Percentagem}) => {
   const navigate = useNavigate();
- const {percentages,setPercentages,setTotalPercentages,totalPercentages,FixedCost,closeModal,
+ const {setVariableCosts,setMetada,percentages,setPercentages,setTotalPercentages,totalPercentages,FixedCost,closeModal,
   totalFixedCost,VariableCost,totalVariableCost,setProduts,produts,metaData,id,setTotalFixedCost,setFixedCosts}= Percentagem;
   
+  const onSubmit=()=>{
+    if(totalFixedCost && FixedCost[3]!==0){
+      if(totalVariableCost===0 || !metaData[0]){
+        toast.error("Antes de Submeter Preencha o Nome do Produto e Adicione pelo menos um Custo Variavel!");
+      }else{
+      handleProduct(id,FixedCost,
+        totalFixedCost,VariableCost,totalVariableCost,percentages,totalPercentages,
+        setProduts,produts,metaData,setMetada,setVariableCosts,setPercentages);
+        navigate("/");
+        if(id!==-1){
+          closeModal(false);
+          toast.success("Produto Editado com Sucesso!");
+        }else
+          toast.success("Produto Adicionado com Sucesso!"); 
+      }}
+    else{
+      toast.error("Introduza os Custos Fixos e a Quantidade de Produtos");
+      navigate("/fixed-costs");
+    }
+   
+  }
+
   useEffect(
     ()=>{
       const data=JSON.parse(localStorage.getItem("fixed"));
@@ -20,19 +45,19 @@ const Percentage = ({Percentagem}) => {
         let sum=0;
         for(let i=0;i<data.length;i++)
           sum+=data[i];
-        if(sum!=0){
+        if(sum!==0){
           setFixedCosts(data)
           setTotalFixedCost(sum);
         }
       }
-    }
+    }// eslint-disable-next-line
   ,[])
 
   return (
     <Container>
       <Row className="mt-4" >
         <Col>
-          <h5 className={Styles.title}>Percentagens</h5>
+          <span className={Styles.title}><Title>Percentagens</Title></span>
         </Col>
       </Row>
       <Container>
@@ -98,8 +123,7 @@ const Percentage = ({Percentagem}) => {
           <div className="text-center">
             <h6>{totalPercentages.toFixed(2)} %</h6>
             <Button
-            onClick={()=>{handleProduct(id,FixedCost,
-            totalFixedCost,VariableCost,totalVariableCost,percentages,totalPercentages,setProduts,produts,metaData);navigate("/");if(id!=-1)closeModal(false)}}
+            onClick={()=>onSubmit()}
       variant="contained"
       color="primary"
       sx={{

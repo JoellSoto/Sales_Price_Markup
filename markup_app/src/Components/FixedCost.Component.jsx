@@ -6,18 +6,17 @@ import {handleChangeFixed as handleChange} from '../utils/InputsFunctions';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import Title from './Title';
 
 
 const FixedCosts = ({Fixed}) => {
    const{FixedCost,setFixedCosts,totalFixedCost,setTotalFixedCost}=Fixed;
    const navigate = useNavigate();
-   const saveFixed=()=>{
-     localStorage.setItem("fixed",JSON.stringify(FixedCost))
-   }
+   const saveFixed=()=>localStorage.setItem("fixed",JSON.stringify(FixedCost))
+   
    useEffect(
     ()=>{
       const data=JSON.parse(localStorage.getItem("fixed"));
-      
       if(data)
       {
         setFixedCosts(data);
@@ -26,14 +25,14 @@ const FixedCosts = ({Fixed}) => {
           sum+=data[i];
           setTotalFixedCost(sum);
       }
-    }
+    }// eslint-disable-next-line 
   ,[])
 
   return (
     <Container>
       <Row className="mt-4" >
         <Col>
-          <h5 className={Styles.title}>Custos Fixos</h5>
+        <span className={Styles.title}><Title>Custos Fixos</Title></span>
         </Col>
       </Row>
       <Container>

@@ -23,6 +23,8 @@ export default function Add({input,setProduts,produts,id,closeModal}){
   }
 
   const PERCENTAGE={
+    'setVariableCosts':input.svc,
+    'setMetada':input.setMetada,
     'percentages':input.pc,
     'setPercentages':input.sp,
     'setTotalPercentages':input.stp,
@@ -59,13 +61,14 @@ export default function Add({input,setProduts,produts,id,closeModal}){
   return(
   <div className={Styles.inputContainer}>
       {pages[pageIndex]}
+
       <div className={Styles.prevNexbuttons}>    
-        <IconButton onClick={handlePrevious}>
+      {pageIndex>0 && <IconButton onClick={handlePrevious}>
           <NavigateBefore /> <span className={Styles.textVisibleSize}>Anterior</span>
-        </IconButton>
-        <IconButton onClick={handleNext}>
+        </IconButton>}
+        {pageIndex<2 && <IconButton onClick={handleNext}>
           <span className={Styles.textVisibleSize}>Proximo</span><NavigateNext />
-        </IconButton>
+        </IconButton> }
       </div>      
     </div>
     )

@@ -19,7 +19,7 @@ import NavBar from '../Components/NavBarLogin.Component ';
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {userExist} from '../utils/ProfileActions';
+import {userExists} from '../utils/ProfileActions';
 import { saveLocally } from '../utils/utils';
 
 export default function SignIn() {
@@ -40,20 +40,18 @@ export default function SignIn() {
         password: pass
       }
 
-      if(userExist(user)){
+      if(userExists(user)){
         toast.success("Login feito com Sucesso!");
         saveLocally(true,"isLogin");
         navigate("/");
       } 
       else{
-        toast.error("Utilizador não encontrado no sistema!");
+        toast.error("ERRO! Contacto ou Password Incorrecto.");
       } 
     }
     else{
       toast.error("Preencha todos os Campos!");
-    }
-
-     
+    }    
   };
 
   return (
@@ -123,7 +121,7 @@ export default function SignIn() {
               
             </Grid>
             <Grid item>
-              <Link onClick={()=>navigate("/signup")} variant="body2">
+              <Link style={{"cursor":'pointer'}} onClick={()=>navigate("/signup")} variant="body2">
                 {"Não tem conta? Crie aqui"}
               </Link>
             </Grid>

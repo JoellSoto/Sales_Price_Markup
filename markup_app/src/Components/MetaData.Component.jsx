@@ -2,18 +2,18 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import TextField  from '@mui/material/TextField';
 import Styles from '../Styles/form.module.scss';
-import {handleChangeString} from '../utils/InputsFunctions'
+import {handleChangeString} from '../utils/InputsFunctions';
+import Title from './Title';
 
 
 const Meta = ({Metadata}) => {
    const{metadata,setMetada}=Metadata
- 
 
   return (
     <Container>
       <Row className="mt-4" >
         <Col>
-          <h5 className={Styles.title}>Produto</h5>
+          <span className={Styles.title}><Title>Produto</Title></span>
         </Col>
       </Row>
       <Container>

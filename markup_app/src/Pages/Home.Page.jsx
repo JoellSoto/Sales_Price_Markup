@@ -7,17 +7,20 @@ import NavBar from '../Components/NavBar.Component';
 import AddProduct from './AddProduct.Page'
 import Modal from '../Components/modal.Component';
 const Home = ({input,setProduts,produts}) => {
-  const [product,setProduct]=useState({});
   const [pos,setPos]=useState(-1);
+
   const [openModal,setOpenModal]=useState(false);
+  const exitModal=()=>{
+    setOpenModal(false);
+  }
   const page= <AddProduct id={pos} input={input} produts={produts} setProduts={setProduts} closeModal={setOpenModal}/>
   return (
     <>
       <NavBar />
       <Container className={Styles.pages}>
-      <Modal onClose={setOpenModal} title="Editar o Producto" pages={page}  status={openModal}/>
-        <PriceListMobile isModalOpen={setOpenModal} setProduct={setProduct} setPos={setPos} produts={produts} input={input} setProduts={setProduts}/>
-        <PriceListDesktop produts={produts} setProduts={setProduts} setProduct={setProduct} isModalOpen={setOpenModal} setPos={setPos} input={input}/>
+        <PriceListMobile isModalOpen={setOpenModal} setPos={setPos} produts={produts} input={input} setProduts={setProduts}/>
+        <PriceListDesktop produts={produts} setProduts={setProduts}  isModalOpen={setOpenModal} setPos={setPos} input={input}/>
+        <Modal onClose={()=>exitModal()} onHide={()=>exitModal()}  title="Editar o Produto" pages={page}  status={openModal}/>
       </Container>
     </>
   );
