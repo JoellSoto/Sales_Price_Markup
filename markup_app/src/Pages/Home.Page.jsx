@@ -20,7 +20,7 @@ const Home = ({input,setProduts,produts}) => {
       <Container className={Styles.pages}>
         <PriceListMobile isModalOpen={setOpenModal} setPos={setPos} produts={produts} input={input} setProduts={setProduts}/>
         <PriceListDesktop produts={produts} setProduts={setProduts}  isModalOpen={setOpenModal} setPos={setPos} input={input}/>
-        <Modal onClose={()=>exitModal()} onHide={()=>exitModal()}  title="Editar o Produto" pages={page}  status={openModal}/>
+        <Modal onClose={()=>exitModal()} onHide={()=>exitModal()}  title="Editar Produto" pages={page}  status={openModal}/>
       </Container>
     </>
   );

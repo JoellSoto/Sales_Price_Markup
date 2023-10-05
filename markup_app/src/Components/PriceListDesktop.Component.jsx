@@ -19,7 +19,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 
-
 function createData(name, productionCost, price,FixedCostPerProduct,costs) {
   return {
     name,
@@ -31,20 +30,17 @@ function createData(name, productionCost, price,FixedCostPerProduct,costs) {
 }
 let rows=[]
 const makeRows=(produtos)=>{
+
   for(let i=0;i<produtos.length;i++){
     rows[i]=createData(produtos[i].nome,produtos[i].unityCost,produtos[i].recomendedPrice,produtos[i].fixedCostPerProduct,produtos[i].custos)  
   }
-
-  /*produtos.forEach((produto,index)=>{
-    //console.log( createData(produto.nome,produto.unityCost,produto.recomendedPrice,produto.fixedCostPerProduct,produto.custos)  )
-    rows[index]=createData(produto.nome,produto.unityCost,produto.recomendedPrice,produto.fixedCostPerProduct,produto.custos)  
-  })*/
 }
 
 const handleDeleteClick = async(idx,produts,setProduts) => {
   await deleteItem(produts,setProduts,idx);  
   const data=localStorage.getItem("Products"); 
-  setProduts(JSON.parse(data));   
+  setProduts(JSON.parse(data)); 
+  
 };
 
 const handleSelect=async(product,index,input,setPos,isModalOpen)=>{
@@ -79,7 +75,7 @@ function Row(props) {
         <TableCell align="center">{row.price} Mts</TableCell>
         <TableCell  align="center"> 
           <EditIcon style={{cursor:'pointer'}}  onClick={()=>handleSelect(produts[index],index,input,setPos,isModalOpen)}/>
-          <DeleteIcon style={{cursor:'pointer'}} className={Styles.deleteButton} onClick={()=>{handleDeleteClick(index,produts,setProduts);window.location.reload()}}/>
+          <DeleteIcon style={{cursor:'pointer'}} className={Styles.deleteButton} onClick={()=>{handleDeleteClick(index,produts,setProduts);window.location.reload();}}/>
         </TableCell>
       </TableRow>
       <TableRow>
@@ -94,7 +90,6 @@ function Row(props) {
                   <TableRow className={Styles.menuHeader}>
                     <TableCell sx={{color:'white'}} align="center">Agrafo</TableCell>
                     <TableCell sx={{color:'white'}} align="center">Algodao</TableCell>
-                    <TableCell sx={{color:'white'}} align="center">Cartão</TableCell>
                     <TableCell sx={{color:'white'}} align="center">Cola</TableCell>
                     <TableCell sx={{color:'white'}} align="center">Esponja</TableCell>
                     <TableCell sx={{color:'white'}} align="center">Linha</TableCell>
@@ -105,11 +100,14 @@ function Row(props) {
                     <TableCell sx={{color:'white'}} align="center">Transporte</TableCell>
                     <TableCell sx={{color:'white'}} align="center">IVA</TableCell>
                     <TableCell sx={{color:'white'}} align="center">Lucro</TableCell>
-
+                    <TableCell sx={{color:'white'}} align="center">Cartão</TableCell>
+                    <TableCell sx={{color:'white'}} align="center">Reserva</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.custos.map((custosRow) => (
+                  {
+                  row.custos.map((custosRow) => (
+                  
                     <TableRow key={custosRow.agrafo}>
                       <TableCell align="center">
                         {custosRow.agrafo} Mts
@@ -117,7 +115,6 @@ function Row(props) {
                       <TableCell align="center">
                         {custosRow.algodao} Mts
                       </TableCell>
-                      <TableCell align="center">{custosRow.cartao} Mts</TableCell>
                       <TableCell align="center">{custosRow.cola} Mts</TableCell>
                       <TableCell align="center">{custosRow.esponja} Mts</TableCell>
                       <TableCell align="center">{custosRow.linha} Mts</TableCell>
@@ -126,8 +123,10 @@ function Row(props) {
                       <TableCell align="center">{custosRow.parafuso} Mts</TableCell>
                       <TableCell align="center">{custosRow.tecido} Mts</TableCell>
                       <TableCell align="center">{custosRow.transporte} Mts</TableCell>
-                      <TableCell align="center">{custosRow.iva} %</TableCell>
-                      <TableCell align="center">{custosRow.lucro} %</TableCell>
+                      <TableCell align="center">{custosRow.iva}%</TableCell>
+                      <TableCell align="center">{custosRow.lucro}%</TableCell>
+                      <TableCell align="center">{custosRow.cartao}%</TableCell>
+                      <TableCell align="center">{custosRow.reserva}%</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -192,6 +191,13 @@ export default function CollapsibleTable({input,setProduts,produts,isModalOpen,s
         </TableBody>
       </Table>
     </TableContainer>
+    {rows.length===0 &&
+ 
+      <Typography variant="h6" sx={{ display: 'flex',
+      justifyContent: 'center',marginTop:'10px'}} className={Styles.centerTable} gutterBottom component="span">
+        Sem dados!
+      </Typography>
+    } 
   </div>  
   );
 }

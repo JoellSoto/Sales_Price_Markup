@@ -69,11 +69,10 @@ const App = () => {
             <Route   path="/" element={<Home input={inputProduct} produts={produts} setProduts={setProduts}/>}/>
             <Route path="/addProduct" element={<AddProduct id={-1} input={inputProduct} produts={produts} setProduts={setProduts}/>} />
           </Route>
-          <Route path='*' element={<Page404/>}/>        
+          <Route path='*' element6={<Page404/>}/>        
         </Routes>
       </Container>
     </div>
-
   );
 };
 

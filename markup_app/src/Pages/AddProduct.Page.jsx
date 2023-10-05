@@ -6,8 +6,6 @@ import VariableCosts from '../Components/VariableCost.Component';
 import Percentage from '../Components/Percentage.Component';
 import Meta from '../Components/MetaData.Component';
 import { useState } from 'react';
-
-
 export default function Add({input,setProduts,produts,id,closeModal}){
 
   const METADATA={

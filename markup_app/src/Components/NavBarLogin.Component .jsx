@@ -8,33 +8,11 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { styled } from '@mui/system';
-import Button from '@mui/material/Button';
-import { useNavigate } from 'react-router-dom';
 import Styles from '../Styles/navBar.module.scss';
 
 
 const drawerWidth = 240;
-const navItems = ['','', '', '',''];
-const navigation =['','',''];
-const StyledTypography = styled(Typography)({
-  display: 'flex',
-  justifyContent: 'center',
-  fontFamily: 'monospace',
-  fontWeight: 600,
-  color: 'inherit',
-  textDecoration: 'none',
-  cursor: 'pointer',
-  fontSize: 'clamp(18px, 5vw, 22px)', // Adjust the values as needed
-  flexGrow: 1,
-  textAlign: 'center',
-  // Other styles...
-});
-
-
-
 function DrawerAppBar(props) {
-  const navigate = useNavigate();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 

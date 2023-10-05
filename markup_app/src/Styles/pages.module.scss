@@ -1,6 +1,13 @@
 $small: 500px;
 $medium: 900px;
 
+.centerTable{
+  margin-top: 10px;
+  display: flex;
+  justify-self: center;
+  width: 100%;
+}
+
 .pages{
   display: flex;
   justify-content: center;
